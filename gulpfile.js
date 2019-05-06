@@ -43,11 +43,11 @@ var DIST = './build';
 
 var PATHS = {
   
-  PUG_SRC:    ['./src/**/*.pug', '!./src/**/_*.pug'],
+  PUG_SRC:    ['./src/**/*.pug', '!./src/**/_*.pug', '!./src/layouts/**/*.*'],
   PUG_DIST:   DIST,
   PUG_WATCH:  './src/**/*.pug',
 
-  SASS_SRC:   ['./src/**/*.scss', '!./src/**/_*.scss'],
+  SASS_SRC:   ['./src/**/*.scss', '!./src/**/_*.scss', '!./src/sass/bootstrap/**/*.*'],
   SASS_DIST:  DIST,
   SASS_WATCH: './src/**/*.scss',
 

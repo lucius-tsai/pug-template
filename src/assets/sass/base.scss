@@ -1,0 +1,7 @@
+@import "./mixins";
+@import "./variable";
+@import "./bootstrap/bootstrap";
+
+.customContainer {
+  @include container
+}
