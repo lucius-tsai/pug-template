@@ -1,0 +1,100 @@
+extends ./layouts/master.pug
+block urlVariable
+	-
+		var url = './'
+		var activeMenu = 4
+
+block content
+	-
+		var indexLists = [
+			{ name: '趨勢', text: [ '保德信', '全球醫療生化基金' ],        url: url + 'power_04.html' },
+			{ name: '績優', text: [ '保德信', '金滿意基金' ],              url: url + 'power_05.html' },
+			{ name: '靈活', text: [ '保德信', '策略成長ETF', '組合基金' ], url: url + 'power_03.html' },
+			{ name: '息收', text: [ '保德信', '印度機會債券基金' ], note: '(本基金有相當比重投資於非投資等級之高風險債券且基金之配息來源可能為本金)', url: url + 'power_01.html' },
+			{ name: '成長', text: [ '保德信', '中國品牌基金' ],            url: url + 'power_05.html' },
+		]
+	.bgContent.gameContent
+		
+		#open
+			.bursh_01
+			.gameContainer
+				p.introText 投資江湖有五位絕世高手，
+					br.mobile
+					| 人稱
+					img.text(src= `${url}assets/imgs/game/text_index.png`)
+					br
+					| 個個實力高深莫測、
+					br.mobile
+					| 武功絕學各有擅長。
+					br
+					| 如果您也想要笑傲投資江湖，
+					br.mobile
+					| 練就掀起金風銀雨之力，
+					br
+					| 那麼欲練神功，
+					br.mobile
+					| 必先自知自身武學資質，
+					br
+					span 快來測驗您是哪一位高手的接班人！
+				.kungfuContainer
+					.kungfuScroll
+						ul.kungfuFighting
+							each item, index in indexLists
+								li
+									.kungfuBlock
+										img.kungfu(src= `${url}assets/imgs/game/kungfu_0${index+1}.png`)
+										img.kungfu.active(src= `${url}assets/imgs/game/kungfu_0${index+1}_act.png`)
+									.textBlock
+										img.textImg(src= `${url}assets/imgs/game/text_intro_0${index+1}.png`)
+				a#startQu.btn.btnBack.round(href='#')
+					| 馬上測試
+		#test
+			.bursh_01
+			.gameContainer
+				.gameProgress
+					div.active
+						.item
+					div.active
+						.item
+					div.active
+						.item
+					div.active
+						.item
+					div.active
+						.item
+
+				.gameQuestion
+					p#question 江湖之路難免會遇上仇家的挑釁，面對仇家您的第一反應是？
+				.answerBox
+					div
+						div
+							.item#A
+								.text
+									p#answerA 好言相勸，您走您的陽關道，我過我的奈何橋
+								.img
+					div
+						div
+							.item#B
+								.text
+									p#answerB 奮力一博，畢竟有人的地方就有恩怨，這就是江湖
+								.img
+				.gameBtnGroup
+					//- button#goPrevQuestion.btn.btnBack.round(type="button")
+					//- 	| 上一題
+					button#goNextQuestion.btn.btnBack.round(type="button")
+						| 下一題
+
+			
+			
+block script
+	script(src= url + 'assets/js/gameLayout.js')
+	script(src= url + 'assets/js/gameAnimation.js')
+	script(src= url + 'assets/js/gameController.js')
+	
+	
+	script.
+
+		
+		
+		
+		

@@ -1,0 +1,251 @@
+@import "../mixins";
+@import "../variable";
+
+$break: md;
+.bgContent.spots {
+
+  
+  .bursh_01, .bursh_02 {
+    position: absolute;
+    &:after {
+      content: '';
+      display: block;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+  .bursh_01 {
+    width: 394px;
+    top: 0;
+    left: 0;
+    &:after {
+      background-image: url(#{$img}bg_bursh_01_spots.png);
+      width: 100%;
+      padding-bottom: 177.538%;
+    }
+    
+    @include rwd-mobile(lg) {
+      display: none;
+    }
+  }
+
+  .bursh_02 {
+    bottom: -508px;
+    left: 0;
+    width: 655px;
+    &:after {
+      background-image: url(#{$img}bg_bursh_02_spots.png);
+      width: 100%;
+      padding-bottom: 178.779%;
+    }
+    
+    @include rwd-mobile(lg) {
+      display: none;
+    }
+  }
+}
+.spotContainer {
+  @include container(960px, 25px, 25px);
+  padding-top: 64px;
+  padding-bottom: 64px;
+  position: relative;
+  z-index: 5;
+  h2 {
+    font-size: 30px;
+    line-height: 30px;
+    color: #001f49;
+    margin-bottom: 24px;
+    span {
+      font-weight: 600;
+    }
+    @include rwd-mobile($break) {
+      font-size: 20px;
+      line-height: 20px;
+    }
+  }
+  @include rwd-mobile($break) {
+    padding-top: 40px;
+    padding-bottom: 50px;
+  }
+}
+
+.spotGroup {
+  .title {
+    display: flex;
+    padding: 16px 15px;
+    position: relative;
+    @include hover();
+    h4 {
+      margin-right: 33px;
+      flex-shrink: 1;
+    }
+    &:after {
+      position: absolute;
+      right: 16px;
+      top: 20px;
+      transition: .3s all;
+      content: '';
+      display: block;
+      width: 20px;
+      height: 11px;
+      background-image: url(#{$img}ico_caret.png);
+      background-size: 100% auto;
+      background-repeat: none;
+      transform: rotate(180deg);
+    }
+    &.collapsed {
+      &:after {
+        transform: rotate(0deg);
+      }
+    }
+    @include rwd-desktop($break) {
+      display: none;
+    }
+  }
+  h4 {
+    font-size: 18px;
+    color: #002247;
+    margin-bottom: 0;
+    font-weight: 600;
+    > span {
+      color: #666666;
+    }
+  }
+  h5 {
+    color: #07639d;
+    font-size: 18px;
+    line-height: 18px;
+  }
+  .collapseBody > div {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 39px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    > div {
+      flex: 0 0 20%;
+      // padding: 7px;
+      display: flex;
+      > div {
+        padding: 7px;
+        width: 100%;
+      }
+      h6 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        background-color: #f1eeee;
+        margin: 0;
+        padding: 13px 16px;
+        text-align: center;
+        color: #111;
+      }
+      @include rwd-mobile(sm) {
+        flex-basis: 25%;
+      }
+      @include rwd-mobile(xs) {
+        flex-basis: 33.33%;
+      }
+    }
+  }
+  @include rwd-desktop($break) {
+    display: none;
+    &.active {
+      display: block;
+    }
+  }
+  @include rwd-mobile($break) {
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0px 0px 5px 0 rgba(#000, 0.35);
+    margin-bottom: 10px;
+    h5 {
+      font-size: 14px;
+      line-height: 14px;
+    }
+    .collapseBody {
+      padding: 23px 16px 25px 16px;
+      border-top: 3px solid #dbe6f2;
+      > div {
+        margin-left: -2px;
+        margin-right: -2px;
+        margin-bottom: 25px;
+      }
+      > div > div {
+        
+        > div {
+          padding: 2px;
+          display: flex;
+        }
+        h6 {
+          font-size: 14px;
+          padding: 9px;
+        }
+      }
+    }
+  }
+}
+
+.box {
+  @include rwd-desktop($break) {
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0px 3px 10px 0 rgba(#000, 0.35);
+    .boxBody {
+      padding: 45px 45px 50px 45px;
+    }
+  }
+}
+
+
+
+.soptTabs {
+  @include clearul;
+  padding-top: 17px;
+  padding-bottom: 11px;
+  padding-right: 23px;
+  padding-left: 23px;
+  display: flex;
+  font-size: 18px;
+  line-height: 24px;
+  border-bottom: 4px solid #dbe6f2;
+  > li {
+    flex: 0 0 auto;
+    padding: 0 8px;
+    display: flex;
+    align-items: center;
+    > a {
+      color: #002247;
+      padding: 15px 16px;
+      display: block;
+      font-weight: 600;
+      border-radius: 10px;
+      transition: .3s all;
+      @include hover () {
+        background-color: rgba(#d9b860, .8);
+        
+      }
+    }
+    &:last-child {
+      flex-shrink: 1;
+      flex-basis: 50%;
+      > a {
+        width: 100%;
+        span {
+          color: #666666;
+        }
+      }
+    }
+    &.active {
+      a {
+        background-color: #d9b860;
+      }
+    }
+  }
+  @include rwd-mobile($break) {
+    display: none;
+  }
+}

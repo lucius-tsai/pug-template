@@ -1,0 +1,239 @@
+extends ./layouts/master.pug
+block urlVariable
+	-
+		var url = './'
+		var activeMenu = 1
+
+block content
+	include ./layouts/components/_variable.pug
+	mixin mutiStrategyInput(data, isActive) 
+		each item in data
+			div
+				.item
+					h3= item.h3
+					h1 
+						span(class= item.class ?  item.class : null)= item.span
+						| #{item.h1}
+					.block
+						img(src= url+ `${url}assets/imgs/components/${item.name}.png`)
+					each pItem in item.items
+						p= pItem.p_1
+							if pItem.p_2
+								span= pItem.span
+								| #{pItem.p_2}
+	mixin mutiMarketInput(data, isActive)
+		each item in data
+			div
+				.item
+					.pic(class= item.bkclass ?  item.bkclass : null)
+						h2= item.h2 
+						img(src= url+ `${url}assets/imgs/components/${item.name}.png`)
+					h5
+						each h5Item, key in item.items
+							if (key%2)
+								span(class= h5Item.class ?  h5Item.class : null)= h5Item.span
+							else
+								| #{h5Item.h5}
+					p= item.p
+	div
+		.marketSection
+			.brush_01
+			.title.lens
+				h1 
+					span 掌
+					| 握V.I.P投資心法
+					br
+					|	Fund大財富不是夢
+			.body
+				.market_container
+					h5 全球經濟成長溫和強勢，各國央行紛紛以政策力挺市場表現，股債市投資機會遍地開花，但機會永遠與風險並存，把握機會也要兼顧風險，想要Fund大財富夢想，必先掌握V.I.P.投資策略！
+					.fig_1_slick
+						.form_box
+							.describe 全球各國股市盈餘成長率預估
+							.market_fig
+								img.desktop(src= url + 'assets/imgs/fig_market_01.png')
+								img.mobile(src= url + 'assets/imgs/fig_market_01_sm.png')
+						.form_box
+							.describe 全球經濟GDP成長預估
+							.market_fig
+								img.desktop(src= url + 'assets/imgs/fig_market_02.png')
+								img.mobile(src= url + 'assets/imgs/fig_market_02_sm.png')
+					p 資料來源：Bloomberg，Factset，QMA，資料期間：2019/2，保德信投信整理。
+			.body.back_grey
+				.brush_02
+				.market_container
+					h1.lens
+						| V.I.P投資
+						span 策
+						| 略
+						i ，
+						br.mobile
+						| 攻守都兼備
+					.strategy_flex
+						+mutiStrategyInput(aData, 1)
+		.marketSection
+			.title
+				h1 預見趨勢力
+					br
+					|	短線題材不斷，長線趨勢確立
+			.body
+				.market_container
+					h1.lens
+						span 醫
+						| 療生化正夯
+					.market_flex
+						+mutiMarketInput(bData, 1)
+					p 注意：本資料所示之指數或個股係為說明或舉例之目的，並非推薦投資，且未必為保德信投信所管理基金之對比指數及或持有之部位。
+		.marketSection
+			.title
+				h1 擁抱成長力
+					br
+					|	政策利多出台、豐沛資金不斷
+			.body
+				.market_container
+					h1.lens
+						span 中
+						| 國品牌蓄力再起
+					.market_flex
+						+mutiMarketInput(cData, 1)
+					p 注意：本資料所示之指數及個股係為說明或舉例之目的，並非推薦投資，且未必為保德信投信所管理基金之對比指數或所投資之標的。
+		.marketSection
+			.title
+				h1 看好績優力
+					br
+					|	具高股利及估值優勢，加上受惠5G題材
+			.body
+				.market_container
+					h1.lens
+						span 台
+						| 股動能可望持續
+					.market_flex
+						+mutiMarketInput(dData, 1)
+					p 注意：本資料所示之指數及個股係為說明或舉例之目的，並非推薦投資，且未必為保德信投信所管理基金之對比指數或所投資之標的。
+		.marketSection
+			.title
+				h1 最愛息收力
+					br
+					|	經濟表現亮麗，且具有較高投資等級收益
+			.body
+				.market_container
+					h1.lens 配息首選
+						span 印
+						| 度債
+					.market_flex
+						+mutiMarketInput(eData, 1)
+					p 本資料所示之指數係為說明或舉例之目的，並非推薦投資，且未必為保德信投信所管理基金之對比指數及或持有之部位。債券殖利率不代表基金報酬率不，亦不代表基金配息率，且殖利率不代表未來殖利率；基金淨值可能因市場因素而上下波動。
+		.marketSection
+			.title
+				h1 掌握靈活力
+					br
+					|	多元資產配置，無懼景氣輪動
+			.body
+				.market_container
+					h1.lens 有
+						span 策
+						| 略才能穩健成長
+					.fig_1_slick
+						div
+							h5 
+								span 囊括多元資產：
+								| 金融市場唯一不變的事就是變，美債殖利率倒掛、升息循環進入末端，股債輪動加速。與其賭性堅強重壓單一產業，不如透過多元資產配置攤平波動風險。
+							.form_box
+								.describe 主要資產季表現(%)
+								.form_flex
+									.item
+										img(src= url + 'assets/imgs/components/2017.png')
+									.item
+										img(src= url + 'assets/imgs/components/2018.png')
+								p 資料來源：Bloomberg，保德信投信整理。資料日期：2017/1~2018/12。全球股：MSCI All Country World Index，全球債：Bloomberg Barclays Global Aggregate Bond Index，REITS：FTSE EPRA NAREIT Developed Total Return Index。原物料：Bloomberg Commodities Index。
+						div
+							h5 
+								span 掌握產業輪動：
+								| 根據歷史經驗顯示，不同資產的績效表現相關係數偏低，唯有透過專業團隊靈活調整股債與產業配置，才能無懼市場變動，財富
+							.form_box
+								.describe 近10年各資產表現
+								.market_fig
+									img.desktop(src= url + 'assets/imgs/fig_market_b_02.png')
+									img.mobile(src= url + 'assets/imgs/fig_market_b_02_sm.png')
+								p 資料來源：Bloomberg，保德信投信整理，2019/1；資料日期：2009/1~2018/12。全球股：MSCI All Country World Index，全球債：Bloomberg Barclays Global Aggregate Bond Index，REITS：FTSE EPRA NAREIT Developed Total Return Index。原物料：Bloomberg Commodities Index。
+					p 注意：本資料所示之指數係為說明或舉例之目的，並非推薦投資，且未必為保德信投信所管理基金之對比指數。
+			.body.back_grey
+				.market_container
+					h1.lens 掌握V.I.P投資心法
+						br
+						span 五
+						| 力全開
+						i ，
+						br.mobile
+						| 財富全都來
+					ul.nav.nav-tabs.justify-content-center
+						li.nav-item
+							a.nav-link.active(data-toggle='tab', href='#V') V
+						li.nav-item
+							a.nav-link(data-toggle='tab', href='#I') I
+						li.nav-item
+							a.nav-link(data-toggle='tab', href='#P') P
+					.tab-content
+						.tab-pane.fade.active.show#V
+							h1 
+								span V
+								| alue
+							.tab_flex
+								.item
+									h2 趨勢力
+									.detail
+										p 醫療需求增長，享受未來創新趨勢
+										.yes_flex
+											img(src= url + 'assets/imgs/components/yes.png')
+											p.dark_blue 保德信全球醫療生化基金
+								.item
+									h2 成長力
+									.detail
+										p 調高國際指數比重及政策面加持，未來深具成長價值
+										.yes_flex
+											img(src= url + 'assets/imgs/components/yes.png')
+											p.dark_blue 保德信中國品牌基金
+								.item
+									h2 績優力
+									.detail
+										p 台股績優企業深受資金青睞
+										.yes_flex
+											img(src= url + 'assets/imgs/components/yes.png')
+											p.dark_blue 保德信金滿意基金
+						.tab-pane.fade#I
+							h1 
+								span I
+								| ncome
+							.tab_flex
+								.item
+									h2 息收力
+									.detail
+										p 穩定且具吸引力的收益，納入核心配置，長期投資效果佳
+										.yes_flex
+											img(src= url + 'assets/imgs/components/yes.png')
+											p.dark_blue 保德信印度機會債券基金
+												span (本基金有相當比重投資於非投資等級之高風險債券且基金之配息來源可能是本金)
+						.tab-pane.fade#P
+							h1 
+								span P
+								| ortfolio
+							.tab_flex
+								.item
+									h2 靈活力
+									.detail
+										p 靈活多元的資產配置，追求長期資產穩健增長
+										.yes_flex
+											img(src= url + 'assets/imgs/components/yes.png')
+											p.dark_blue 保德信策略成長ETF組合基金
+					p 資料來源：保德信投信，2019/3。
+block script
+	script(src= url + 'assets/plugins/slick/slick.min.js')
+	script(src= url + 'assets/js/handleMarketTitle.js')
+	script.
+		$('.fig_1_slick').slick({
+			//- dots: true,
+			infinite: true,
+			speed: 500,
+			fade: true,
+			cssEase: 'linear'
+		});

@@ -1,0 +1,680 @@
+#fb-share-button {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  width: 18.451%;
+  display: block;
+  left: 3.87%;
+  bottom: 29.326%; }
+  #fb-share-button:after {
+    content: '';
+    display: block;
+    width: 100%;
+    padding-bottom: 32.87%;
+    background-image: url(../../assets/imgs//game/btn_fb.png);
+    background-position: center;
+    background-size: 100% auto;
+    background-repeat: no-repeat; }
+  @media only screen and (max-width: 767px) {
+    #fb-share-button {
+      width: 28.14371%;
+      left: 6.58683%;
+      bottom: 26.10063%; }
+      #fb-share-button:after {
+        background-image: url(../../assets/imgs//game/btn_fb_sm.png); } }
+
+.kungfuContainer {
+  margin-top: -48px;
+  margin-bottom: -38px;
+  position: relative;
+  z-index: 0; }
+  @media only screen and (max-width: 767px) {
+    .kungfuContainer {
+      margin-top: 30px;
+      margin-bottom: 0px; } }
+
+.btnBack.round {
+  border-radius: 24px; }
+
+.gameContent {
+  min-height: 859px;
+  position: relative; }
+  @media only screen and (max-width: 767px) {
+    .gameContent {
+      min-height: auto; } }
+
+.gameContainer {
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  max-width: 1240px; }
+  @media only screen and (max-width: 767px) {
+    .gameContainer {
+      padding-left: 20px;
+      padding-right: 20px; } }
+
+#open, #test {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+  @media only screen and (max-width: 767px) {
+    #open, #test {
+      padding-top: 55px;
+      padding-bottom: 65px;
+      position: static; } }
+
+#open .gameContainer {
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  max-width: 1253px; }
+  @media only screen and (max-width: 767px) {
+    #open .gameContainer {
+      padding-left: 20px;
+      padding-right: 20px; } }
+
+#open .kungfuScroll {
+  position: relative; }
+
+#open .btn {
+  position: relative;
+  z-index: 1;
+  width: 233px; }
+
+#open .bursh_01 {
+  position: absolute;
+  width: 846px;
+  top: -105px; }
+  #open .bursh_01:after {
+    content: '';
+    display: block;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../../assets/imgs/game/game_bursh.png);
+    width: 100%;
+    padding-bottom: 93%; }
+  @media only screen and (max-width: 1199px) {
+    #open .bursh_01 {
+      top: -80px;
+      width: 800px; } }
+  @media only screen and (max-width: 991px) {
+    #open .bursh_01 {
+      top: -60px; } }
+  @media only screen and (max-width: 991px) {
+    #open .bursh_01 {
+      width: 200px;
+      left: auto;
+      right: 0;
+      top: -65px; }
+      #open .bursh_01:after {
+        background-image: url(../../assets/imgs/game/game_bursh_sm.png);
+        padding-bottom: 225%; } }
+  @media only screen and (max-width: 575px) {
+    #open .bursh_01 {
+      width: 169px; } }
+
+.introText {
+  width: 541px;
+  margin-left: 152px;
+  font-size: 22px;
+  line-height: 36px;
+  color: #060606;
+  text-align: center; }
+  @media only screen and (max-width: 1199px) {
+    .introText {
+      margin-left: 75px;
+      text-align: left; } }
+  @media only screen and (max-width: 767px) {
+    .introText {
+      width: 100%;
+      margin-left: 0; } }
+  @media only screen and (max-width: 575px) {
+    .introText {
+      font-size: 18px;
+      line-height: 28px; } }
+  .introText br.mobile {
+    display: none; }
+    @media only screen and (max-width: 767px) {
+      .introText br.mobile {
+        display: block; } }
+  .introText .text {
+    height: 39px;
+    vertical-align: baseline;
+    margin-bottom: -5px;
+    margin-left: 8px; }
+    @media only screen and (max-width: 767px) {
+      .introText .text {
+        height: 27px;
+        margin-top: 5px; } }
+  .introText span {
+    color: #002247;
+    font-weight: 600; }
+
+#test {
+  display: none; }
+  #test .gameContainer {
+    width: 100%;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    max-width: 760px;
+    padding-top: 0;
+    padding-bottom: 0;
+    z-index: 2; }
+    @media only screen and (max-width: 767px) {
+      #test .gameContainer {
+        padding-left: 20px;
+        padding-right: 20px; } }
+  #test .bursh_01 {
+    position: absolute;
+    z-index: 1;
+    width: 924px;
+    bottom: -300px;
+    right: -120px; }
+    #test .bursh_01:after {
+      content: '';
+      display: block;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url(../../assets/imgs/game/answer_brush.png);
+      width: 100%;
+      padding-bottom: 103.842%; }
+    @media only screen and (max-width: 1199px) {
+      #test .bursh_01 {
+        width: 800px; } }
+    @media only screen and (max-width: 991px) {
+      #test .bursh_01 {
+        width: 204px;
+        left: auto;
+        right: 0px;
+        bottom: -10px; }
+        #test .bursh_01:after {
+          background-image: url(../../assets/imgs/game/answer_brush_sm.png);
+          padding-bottom: 211%; } }
+    @media only screen and (max-width: 575px) {
+      #test .bursh_01 {
+        width: 169px; } }
+
+#result .bursh_01 {
+  position: absolute;
+  z-index: 1;
+  width: 768px;
+  bottom: -10px;
+  right: 50px; }
+  #result .bursh_01:after {
+    content: '';
+    display: block;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../../assets/imgs/game/result_brush.png);
+    width: 100%;
+    padding-bottom: 74.739%; }
+  @media only screen and (max-width: 1199px) {
+    #result .bursh_01 {
+      display: none; } }
+
+#result .gameContainer {
+  padding-top: 87px;
+  padding-bottom: 56px;
+  z-index: 2;
+  position: relative; }
+  @media only screen and (max-width: 767px) {
+    #result .gameContainer {
+      padding-top: 35px;
+      padding-bottom: 45px; } }
+
+#result .resultText {
+  font-size: 24px;
+  line-height: 36px; }
+  #result .resultText b {
+    color: #002247;
+    font-weight: 600;
+    margin-left: 8px;
+    margin-right: 8px; }
+  #result .resultText br.mobile {
+    display: none; }
+  #result .resultText span {
+    display: inline-block;
+    font-weight: 600;
+    padding: 8px 13px;
+    font-size: 22px;
+    line-height: 22px;
+    color: #fff;
+    background-color: #002247;
+    border-radius: 6px;
+    margin: 5px 8px; }
+    #result .resultText span > i {
+      font-style: normal;
+      font-weight: 600;
+      opacity: .8;
+      line-height: 26px; }
+  @media only screen and (max-width: 767px) {
+    #result .resultText br {
+      display: none; }
+    #result .resultText br.mobile {
+      display: block; }
+    #result .resultText span {
+      margin: 10px 0; } }
+  @media only screen and (max-width: 575px) {
+    #result .resultText {
+      font-size: 16px;
+      line-height: 26px; }
+      #result .resultText span {
+        font-size: 15px;
+        line-height: 15px;
+        max-width: none;
+        margin-left: 0;
+        margin-right: auto; } }
+
+#result .gameContainer {
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  max-width: 815px; }
+  @media only screen and (max-width: 767px) {
+    #result .gameContainer {
+      padding-left: 20px;
+      padding-right: 20px; } }
+
+.gameBtnGroup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+  .gameBtnGroup .btnBack {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 156px;
+    flex: 0 0 156px;
+    margin: 0; }
+    .gameBtnGroup .btnBack + .btnBack {
+      margin-left: 20px; }
+  .gameBtnGroup.result .btn {
+    font-size: 26px;
+    font-weight: 600;
+    padding: 9px 35px;
+    border-radius: 8px; }
+    .gameBtnGroup.result .btn + .btn {
+      margin-left: 32px; }
+      @media only screen and (max-width: 575px) {
+        .gameBtnGroup.result .btn + .btn {
+          margin-left: 12px; } }
+    @media only screen and (max-width: 575px) {
+      .gameBtnGroup.result .btn {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 1 156px;
+        flex: 0 1 156px;
+        font-size: 20px;
+        padding: 9px 25px; } }
+  .gameBtnGroup.result .btn-primary {
+    background-color: #0a5abc;
+    border-color: #0a5abc; }
+    .gameBtnGroup.result .btn-primary:hover, .gameBtnGroup.result .btn-primary:focus, .gameBtnGroup.result .btn-primary:active, .gameBtnGroup.result .btn-primary.active {
+      background: #07438c;
+      text-decoration: none;
+      outline: none;
+      outline: none;
+      -webkit-box-shadow: none;
+      box-shadow: none; }
+    .gameBtnGroup.result .btn-primary:not(:disabled):not(.disabled):active, .gameBtnGroup.result .btn-primary:not(:disabled):not(.disabled).active {
+      background-color: #07438c;
+      border-color: #07438c;
+      outline: none;
+      -webkit-box-shadow: none;
+      box-shadow: none; }
+  .gameBtnGroup.result .btn-secondary {
+    background-color: #d9b860;
+    border-color: #d9b860; }
+    .gameBtnGroup.result .btn-secondary:hover, .gameBtnGroup.result .btn-secondary:focus, .gameBtnGroup.result .btn-secondary:active, .gameBtnGroup.result .btn-secondary.active {
+      background: #cfa637;
+      text-decoration: none;
+      outline: none;
+      outline: none;
+      -webkit-box-shadow: none;
+      box-shadow: none; }
+    .gameBtnGroup.result .btn-secondary:not(:disabled):not(.disabled):active, .gameBtnGroup.result .btn-secondary:not(:disabled):not(.disabled).active {
+      background-color: #cfa637;
+      border-color: #cfa637;
+      outline: none;
+      -webkit-box-shadow: none;
+      box-shadow: none; }
+
+.kungfuScroll {
+  width: 1213px;
+  height: 569px;
+  background: url(../../assets/imgs//game/bg_scroll.png);
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end; }
+  @media only screen and (max-width: 767px) {
+    .kungfuScroll {
+      background: none; } }
+
+.kungfuFighting > li:nth-child(1) {
+  margin-left: 0;
+  margin-bottom: 121px; }
+  .kungfuFighting > li:nth-child(1) .kungfuBlock {
+    width: 246px; }
+  .kungfuFighting > li:nth-child(1) .textBlock {
+    top: -33px;
+    left: 142px; }
+  .kungfuFighting > li:nth-child(1).active {
+    margin-bottom: 140px; }
+
+#result_1 .resultBlock img.lg {
+  width: 87.09677%;
+  bottom: 1.19474%; }
+
+#result_1 .resultBlock img.sm {
+  width: 91.31737%; }
+
+.gameProgress > div:nth-child(1) > .item:before {
+  left: -29px;
+  top: -26px;
+  background-image: url(../../assets/imgs/game/kungfu_01.png);
+  width: 122px;
+  height: 116px; }
+
+.gameProgress > div:nth-child(1).active > .item:before {
+  background-image: url(../../assets/imgs/game/kungfu_01_act.png); }
+
+.kungfuFighting > li:nth-child(2) {
+  margin-left: -14px;
+  margin-bottom: 124px; }
+  .kungfuFighting > li:nth-child(2) .kungfuBlock {
+    width: 230px; }
+  .kungfuFighting > li:nth-child(2) .textBlock {
+    top: 0px;
+    left: -105px; }
+  .kungfuFighting > li:nth-child(2).active {
+    margin-bottom: 145px; }
+
+#result_2 .resultBlock img.lg {
+  width: 104%;
+  bottom: 5.25687%; }
+
+#result_2 .resultBlock img.sm {
+  width: 100.2994%; }
+
+.gameProgress > div:nth-child(2) > .item:before {
+  left: -25px;
+  top: -31.5px;
+  background-image: url(../../assets/imgs/game/kungfu_02.png);
+  width: 114px;
+  height: 127px; }
+
+.gameProgress > div:nth-child(2).active > .item:before {
+  background-image: url(../../assets/imgs/game/kungfu_02_act.png); }
+
+.gameProgress > div:nth-child(2) > .item:before {
+  left: -22px;
+  top: -37.5px; }
+
+.kungfuFighting > li:nth-child(3) {
+  margin-left: -33px;
+  margin-bottom: 133px; }
+  .kungfuFighting > li:nth-child(3) .kungfuBlock {
+    width: 187px; }
+  .kungfuFighting > li:nth-child(3) .textBlock {
+    top: -40px;
+    left: 108px; }
+  .kungfuFighting > li:nth-child(3).active {
+    margin-bottom: 145px; }
+
+#result_3 .resultBlock img.lg {
+  width: 95.48387%;
+  bottom: 5.25687%; }
+
+#result_3 .resultBlock img.sm {
+  width: 104.19162%; }
+
+.gameProgress > div:nth-child(3) > .item:before {
+  left: -14.5px;
+  top: -15px;
+  background-image: url(../../assets/imgs/game/kungfu_03.png);
+  width: 93px;
+  height: 94px; }
+
+.gameProgress > div:nth-child(3).active > .item:before {
+  background-image: url(../../assets/imgs/game/kungfu_03_act.png); }
+
+.gameProgress > div:nth-child(3) > .item:before {
+  left: -29.5px; }
+
+.kungfuFighting > li:nth-child(4) {
+  margin-left: -18px;
+  margin-bottom: 120px; }
+  .kungfuFighting > li:nth-child(4) .kungfuBlock {
+    width: 129px; }
+  .kungfuFighting > li:nth-child(4) .textBlock {
+    top: 0px;
+    left: -160px; }
+  .kungfuFighting > li:nth-child(4).active {
+    margin-bottom: 136px; }
+
+#result_4 .resultBlock img.lg {
+  width: 93.93548%;
+  bottom: 2.38949%; }
+
+#result_4 .resultBlock img.sm {
+  width: 99.7006%; }
+
+.gameProgress > div:nth-child(4) > .item:before {
+  left: 0px;
+  top: -36.5px;
+  background-image: url(../../assets/imgs/game/kungfu_04.png);
+  width: 64px;
+  height: 137px; }
+
+.gameProgress > div:nth-child(4).active > .item:before {
+  background-image: url(../../assets/imgs/game/kungfu_04_act.png); }
+
+.gameProgress > div:nth-child(4) > .item:before {
+  left: -10px; }
+
+.kungfuFighting > li:nth-child(5) {
+  margin-left: -70px;
+  margin-bottom: 145px; }
+  .kungfuFighting > li:nth-child(5) .kungfuBlock {
+    width: 330px; }
+  .kungfuFighting > li:nth-child(5) .textBlock {
+    top: 10px;
+    left: 50px; }
+  .kungfuFighting > li:nth-child(5).active {
+    margin-bottom: 145px; }
+
+#result_5 .resultBlock img.lg {
+  width: 98.19355%;
+  bottom: 5.49582%; }
+
+#result_5 .resultBlock img.sm {
+  width: 101.79641%; }
+
+.gameProgress > div:nth-child(5) > .item:before {
+  left: -49.5px;
+  top: -28px;
+  background-image: url(../../assets/imgs/game/kungfu_05.png);
+  width: 163px;
+  height: 120px; }
+
+.gameProgress > div:nth-child(5).active > .item:before {
+  background-image: url(../../assets/imgs/game/kungfu_05_act.png); }
+
+.gameProgress > div:nth-child(5) > .item:before {
+  top: -34px;
+  left: -44.5px; }
+
+.gameProgress {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-bottom: 75px; }
+  @media only screen and (max-width: 767px) {
+    .gameProgress {
+      -webkit-transform: scale(0.6);
+      transform: scale(0.6);
+      margin-bottom: 40px; } }
+  @media only screen and (max-width: 575px) {
+    .gameProgress {
+      -webkit-transform: scale(0.5);
+      transform: scale(0.5);
+      margin-bottom: 30px; } }
+  @media only screen and (max-width: 374px) {
+    .gameProgress {
+      -webkit-transform: scale(0.4);
+      transform: scale(0.4);
+      margin-bottom: 20px; } }
+  .gameProgress > div {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 144px;
+    flex: 0 0 144px; }
+    .gameProgress > div.active > .item:after {
+      content: '';
+      display: block;
+      width: 80px;
+      border-top: 5px dashed #002247;
+      position: absolute;
+      top: 28px;
+      right: 100%; }
+    .gameProgress > div:last-child {
+      margin-right: 0;
+      -webkit-box-flex: 0;
+      -ms-flex: 0 0 64px;
+      flex: 0 0 64px; }
+    .gameProgress > div:first-child > .item:after {
+      content: none; }
+    .gameProgress > div > .item {
+      -webkit-box-flex: 0;
+      -ms-flex: 0 0 64px;
+      flex: 0 0 64px;
+      width: 64px;
+      height: 66px;
+      position: relative; }
+      .gameProgress > div > .item:before {
+        position: absolute;
+        content: '';
+        display: block;
+        background-image: url(../../assets/imgs/game/kungfu_01_act.png);
+        background-size: 100% auto;
+        background-position: center; }
+
+.resultBlock {
+  width: 100%;
+  padding-bottom: 54%;
+  background: #FFF;
+  -webkit-box-shadow: 1.5px 2.6px 10px 0 rgba(0, 0, 0, 0.35);
+  box-shadow: 1.5px 2.6px 10px 0 rgba(0, 0, 0, 0.35);
+  border-radius: 20px;
+  position: relative;
+  margin-top: 61px;
+  margin-bottom: 50px; }
+  @media only screen and (max-width: 767px) {
+    .resultBlock {
+      margin-top: 26px;
+      margin-bottom: 32px;
+      padding-bottom: 95%; } }
+  .resultBlock > img.lg, .resultBlock > img.sm {
+    position: absolute; }
+  .resultBlock > img.sm {
+    display: none;
+    left: 5.98802%;
+    bottom: 5.03145%; }
+    @media only screen and (max-width: 767px) {
+      .resultBlock > img.sm {
+        display: block; } }
+  .resultBlock > img.lg {
+    left: 3.6129%;
+    bottom: 29px; }
+    @media only screen and (max-width: 767px) {
+      .resultBlock > img.lg {
+        display: none; } }
+
+.kungfuFighting {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  padding-left: 113px; }
+  @media only screen and (max-width: 767px) {
+    .kungfuFighting {
+      padding-left: 0; } }
+  .kungfuFighting > li {
+    -webkit-transition: margin-bottom 0.6s ease-out, opacity 1s ease-in-out, -webkit-transform 0.6s ease-out;
+    transition: margin-bottom 0.6s ease-out, opacity 1s ease-in-out, -webkit-transform 0.6s ease-out;
+    transition: transform 0.6s ease-out, margin-bottom 0.6s ease-out, opacity 1s ease-in-out;
+    transition: transform 0.6s ease-out, margin-bottom 0.6s ease-out, opacity 1s ease-in-out, -webkit-transform 0.6s ease-out;
+    position: relative;
+    -webkit-animation-duration: .8s;
+    animation-duration: .8s;
+    opacity: 0;
+    z-index: 1; }
+    .kungfuFighting > li.bounceInUp, .kungfuFighting > li.bounceInDown {
+      opacity: 1; }
+    .kungfuFighting > li.active {
+      -webkit-transform: scale(1.27);
+      transform: scale(1.27);
+      z-index: 2; }
+      .kungfuFighting > li.active .kungfuBlock img.kungfu.active {
+        opacity: 1; }
+      .kungfuFighting > li.active .textBlock {
+        opacity: 1; }
+  .kungfuFighting .kungfuBlock {
+    position: relative; }
+  .kungfuFighting .textBlock {
+    position: absolute;
+    opacity: 0;
+    -webkit-transition: margin-bottom 0.6s ease-out, opacity 1s ease-in-out, -webkit-transform 0.6s ease-out;
+    transition: margin-bottom 0.6s ease-out, opacity 1s ease-in-out, -webkit-transform 0.6s ease-out;
+    transition: transform 0.6s ease-out, margin-bottom 0.6s ease-out, opacity 1s ease-in-out;
+    transition: transform 0.6s ease-out, margin-bottom 0.6s ease-out, opacity 1s ease-in-out, -webkit-transform 0.6s ease-out; }
+    .kungfuFighting .textBlock img {
+      height: 60px; }
+    @media only screen and (max-width: 767px) {
+      .kungfuFighting .textBlock {
+        display: none; } }
+  .kungfuFighting .kungfuBlock img.kungfu {
+    width: 100%; }
+    .kungfuFighting .kungfuBlock img.kungfu.active {
+      -webkit-transition: margin-bottom 0.6s ease-out, opacity 1s ease-in-out, -webkit-transform 0.6s ease-out;
+      transition: margin-bottom 0.6s ease-out, opacity 1s ease-in-out, -webkit-transform 0.6s ease-out;
+      transition: transform 0.6s ease-out, margin-bottom 0.6s ease-out, opacity 1s ease-in-out;
+      transition: transform 0.6s ease-out, margin-bottom 0.6s ease-out, opacity 1s ease-in-out, -webkit-transform 0.6s ease-out;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0; }
+
+/*# sourceMappingURL=game.css.map */

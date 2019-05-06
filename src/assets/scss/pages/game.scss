@@ -1,0 +1,688 @@
+@import "../mixins";
+@import "../variable";
+
+$rwd: sm;
+
+#fb-share-button {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  width: 18.451%;
+  display: block;
+  left: 3.87%;
+  bottom: 29.326%;
+  &:after {
+    content: '';
+    display: block;
+    width: 100%;
+    padding-bottom: 32.87%;
+    background-image: url(#{$img}/game/btn_fb.png);
+    background-position: center;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+  }
+  @include rwd-mobile($rwd) {
+    width: (94/334)*100%;
+    left: (22/334)*100%;
+    bottom: (83/318)*100%;
+    &:after {
+      background-image: url(#{$img}/game/btn_fb_sm.png);
+    }
+  }
+}
+
+.kungfuContainer {
+  margin-top: -48px;
+  margin-bottom: -38px;
+  position: relative;
+  z-index: 0;
+  @include rwd-mobile($rwd) {
+    margin-top: 30px;
+    margin-bottom: 0px;
+  }
+}
+.btnBack.round {
+  border-radius: 24px;
+}
+.gameContent {
+  min-height: 859px;
+  position: relative;
+  @include rwd-mobile(sm) {
+    min-height: auto;
+  }
+}
+.gameContainer {
+  @include container(1240px, 20px, 20px);
+  // padding-top: 55px;
+  
+}
+#open, #test {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  @include rwd-mobile(sm) {
+    padding-top: 55px;
+    padding-bottom: 65px;
+    position: static;
+  }
+}
+#open {
+  // display: none;
+  .gameContainer {
+    @include container(1253px, 20px, 20px);
+  }
+  .kungfuScroll {
+    position: relative;
+  }
+  .btn {
+    position: relative;
+    z-index: 1;
+    width: 233px;
+  }
+  
+  .bursh_01 {
+    position: absolute;
+    // opacity: 0;
+    width: 846px;
+    top: -105px;
+    // right: 10px;
+    &:after {
+      content: '';
+      display: block;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url(#{$img}game/game_bursh.png);
+      width: 100%;
+      padding-bottom: 93%;
+    }
+    @include rwd-mobile(lg) {
+      top: -80px;
+      width: 800px;
+    }
+    @include rwd-mobile(md) {
+      top: -60px;
+      
+    }
+    @include rwd-mobile(md) {
+      width: 200px;
+      left: auto;
+      right: 0;
+      top: -65px;
+      &:after {
+        background-image: url(#{$img}game/game_bursh_sm.png);
+        padding-bottom: 225%;
+      }
+    }
+    @include rwd-mobile(xs) {
+      width: 169px;
+    }
+  } 
+}
+
+.introText {
+  width: 541px;
+  margin-left: 152px;
+  font-size: 22px;
+  line-height: 36px;
+  color: #060606;
+  text-align: center;
+  @include rwd-mobile(lg) {
+    margin-left: 75px;
+    text-align: left;
+  }
+  @include rwd-mobile($rwd) {
+    width: 100%;
+    margin-left: 0;
+    
+  }
+  @include rwd-mobile(xs) {
+    font-size: 18px;
+    line-height: 28px;
+  }
+  br.mobile {
+    display: none;
+    @include rwd-mobile($rwd) {
+      display: block;
+    }
+  }
+  .text {
+    height: 39px;
+    vertical-align: baseline;
+    margin-bottom: -5px;
+    margin-left: 8px;
+    @include rwd-mobile($rwd) {
+      height: 27px;
+      margin-top: 5px;
+    }
+  }
+  span {
+    color: #002247;
+    font-weight: 600;
+  }
+}
+
+#test {
+  display: none;
+  
+  .gameContainer {
+    @include container(760px, 20px, 20px);
+    padding-top: 0;
+    padding-bottom: 0;
+    z-index: 2;
+    
+  }
+  .bursh_01 {
+    position: absolute;
+    z-index: 1;
+    width: 924px;
+    bottom: -300px;
+    right: -120px;
+    &:after {
+      content: '';
+      display: block;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url(#{$img}game/answer_brush.png);
+      width: 100%;
+      padding-bottom: 103.842%;
+    }
+    @include rwd-mobile(lg) {
+      width: 800px;
+    }
+    @include rwd-mobile(md) {
+      width: 204px;
+      left: auto;
+      right: 0px;
+      bottom: -10px;
+      
+      &:after {
+        background-image: url(#{$img}game/answer_brush_sm.png);
+        padding-bottom: 211%;
+      }
+    }
+    @include rwd-mobile(xs) {
+      width: 169px;
+    }
+  } 
+}
+
+#result {
+  // display: none;
+  
+  .bursh_01 {
+    position: absolute;
+    z-index: 1;
+    width: 768px;
+    bottom: -10px;
+    right: 50px;
+    &:after {
+      content: '';
+      display: block;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url(#{$img}game/result_brush.png);
+      width: 100%;
+      padding-bottom: 74.739%;
+    }
+    
+    
+    @include rwd-mobile(lg) {
+      display: none;
+    }
+  } 
+  .gameContainer {
+    padding-top: 87px;
+    padding-bottom: 56px;
+    z-index: 2;
+    position: relative;
+    @include rwd-mobile(sm){
+      padding-top: 35px;
+      padding-bottom: 45px;
+    }
+  }
+  .resultText {
+    font-size: 24px;
+    line-height: 36px;
+    b {
+      color: #002247;
+      font-weight: 600;
+      margin-left: 8px;
+      margin-right: 8px;
+    }
+    br.mobile { display: none }
+    span {
+      display: inline-block;
+      // max-width: 250px;
+      font-weight: 600;
+      padding: 8px 13px;
+      font-size: 22px;
+      line-height: 22px;
+      color: #fff;
+      background-color: #002247;
+      border-radius: 6px;
+      margin: 5px 8px;
+      // vertical-align: middle;
+      > i {
+        font-style: normal;
+        font-weight: 600;
+        opacity: .8;
+        line-height: 26px;
+      }
+    }
+    @include rwd-mobile(sm){
+      br { display: none }
+      br.mobile { display: block }
+      span {
+        margin: 10px 0;
+      }
+    }
+    @include rwd-mobile(xs){
+      font-size: 16px;
+      line-height: 26px;
+      span {
+        font-size: 15px;
+        line-height: 15px;
+        max-width: none;
+        margin-left: 0;
+        margin-right: auto;
+      }
+    }
+  }
+  .gameContainer {
+    @include container(815px, 20px, 20px);
+  }
+  div[id^='result_'] {
+    // display: none;
+  }
+}
+
+@mixin btnAlt($color) {
+  background-color: $color;
+  border-color: $color;
+  $darkColor: darken($color, 10%);
+  @include hover(null, $darkColor){
+    outline: none;
+    box-shadow: none;
+  }
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active {
+    background-color: $darkColor;
+    border-color: $darkColor;
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+.gameBtnGroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .btnBack {
+    flex: 0 0 156px;
+    margin: 0;
+    + .btnBack {
+      margin-left: 20px;
+    }
+  }
+  &.result {
+    .btn {
+      font-size: 26px;
+      font-weight: 600;
+      padding: 9px 35px;
+      border-radius: 8px;
+      + .btn {
+        margin-left: 32px;
+        @include rwd-mobile(xs){
+          margin-left: 12px;
+        }
+      }
+      @include rwd-mobile(xs){
+        flex: 0 1 156px;
+        font-size: 20px;
+        padding: 9px 25px;
+      }
+    }
+    .btn-primary {
+      @include btnAlt(#0a5abc)
+    }
+    .btn-secondary {
+      @include btnAlt(#d9b860)
+    }
+  }
+}
+
+
+
+.kungfuScroll {
+  width: 1213px;
+  height: 569px;
+  background: url(#{$img}/game/bg_scroll.png);
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: flex-end;
+  @include rwd-mobile($rwd) {
+    background: none;
+  }
+}
+
+
+
+$KungFuMap: (
+  '1': (
+    'width': 246px,
+    'left': 0,
+    'bottom': 121px,
+    'tTop': -33px,
+    'tLeft': 142px,
+    'actBottom': 140px,
+    'resultWidth': (675/775)*100%,
+    'resultWidthSM': (305/334)*100%,
+    'resultPaddingBottom' : (5/418.5)*100%,
+    'kfW': 122px,
+    'kfH': 116px,
+  ),
+  '2': (
+    'width': 230px,
+    'left': -14px,
+    'bottom': 124px,
+    'tTop': 0px,
+    'tLeft': -105px,
+    'actBottom': 145px,
+    'resultWidth': (806/775)*100%,
+    'resultWidthSM': (335/334)*100%,
+    'resultPaddingBottom' : (22/418.5)*100%,
+    'kfW': 114px,
+    'kfH': 127px,
+  ),
+  '3': (
+    'width': 187px,
+    'left': -33px,
+    'bottom': 133px,
+    'tTop': -40px,
+    'tLeft': 108px,
+    'actBottom': 145px,
+    'resultWidth': (740/775)*100%,
+    'resultWidthSM': (348/334)*100%,
+    'resultPaddingBottom' : (22/418.5)*100%,
+    'kfW': 93px,
+    'kfH': 94px,
+  ),
+  '4': (
+    'width': 129px,
+    'left': -18px,
+    'bottom': 120px,
+    'tTop': 0px,
+    'tLeft': -160px,
+    'actBottom': 136px,
+    'resultWidth': (728/775)*100%,
+    'resultWidthSM': (333/334)*100%,
+    'resultPaddingBottom' : (10/418.5)*100%,
+    'kfW': 64px,
+    'kfH': 137px,
+  ),
+  '5': (
+    'width': 330px,
+    'left': -70px,
+    'bottom': 145px,
+    'tTop': 10px,
+    'tLeft': 50px,
+    'actBottom': 145px,
+    'resultWidth': (761/775)*100%,
+    'resultWidthSM': (340/334)*100%,
+    'resultPaddingBottom' : (23/418.5)*100%,
+    'kfW': 163px,
+    'kfH': 120px,
+  )
+);
+
+$lists: '1', '2', '3', '4', '5';
+$kfScaleSM: .7;
+@each $index in $lists {
+  $i:      map-get($KungFuMap, #{$index});
+  $width:  map-get($i, 'width');
+  $left:   map-get($i, 'left');
+  $bottom: map-get($i, 'bottom');
+  $tTop:   map-get($i, 'tTop');
+  $tLeft:  map-get($i, 'tLeft');
+  $actBottom:  map-get($i, 'actBottom');
+  $resultWidth:  map-get($i, 'resultWidth');
+  $resultPaddingBottom:  map-get($i, 'resultPaddingBottom');
+  $resultWidthSM:  map-get($i, 'resultWidthSM');
+  $resultWidthSM:  map-get($i, 'resultWidthSM');
+  $kfW:  map-get($i, 'kfW');
+  $kfH:  map-get($i, 'kfH');
+  .kungfuFighting > li:nth-child(#{$index}) {
+    margin-left: $left;
+    margin-bottom: $bottom;
+    .kungfuBlock {
+      width: $width;
+    }
+    .textBlock {
+      top: $tTop;
+      left: $tLeft;
+    }
+    &.active {//, &:hover {
+      margin-bottom: $actBottom;
+    }
+  }
+  #result_#{$index} {
+    .resultBlock {
+      img.lg {
+        width: $resultWidth;
+        bottom: $resultPaddingBottom;
+      }
+      img.sm {
+        width: $resultWidthSM;
+        // bottom: $resultPaddingBottom;
+      }
+      
+    }
+  }
+
+  .gameProgress {
+    > div:nth-child(#{$index}) {
+      > .item {
+        &:before {
+          left: 32px - ($kfW/2);
+          top: 32px - ($kfH/2);
+          background-image: url(#{$img}game/kungfu_0#{$index}.png);
+          width: $kfW;
+          height: $kfH;
+        }
+      }
+      &.active > .item:before {
+        background-image: url(#{$img}game/kungfu_0#{$index}_act.png);
+      }
+    }
+    @if ($index == '2') {
+      > div:nth-child(#{$index}) > .item:before{
+        left: 32px - ($kfW/2) + 3px;
+        top: 32px - ($kfH/2) -6px;
+      }
+    }
+    @if ($index == '3') {
+      > div:nth-child(#{$index}) > .item:before{
+        left: 32px - ($kfW/2) - 15px;
+      }
+    }
+    @if ($index == '4') {
+      > div:nth-child(#{$index}) > .item:before{
+        left: 32px - ($kfW/2) - 10px;
+      }
+    }
+    @if ($index == '5') {
+      > div:nth-child(#{$index}) > .item:before{
+        top: 32px - ($kfH/2) -6px;
+        left: 32px - ($kfW/2) + 5px;
+      }
+    }
+  }
+
+}
+.gameProgress {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 75px;
+  @include rwd-mobile(sm) {
+    transform: scale(.6);
+    margin-bottom: 40px
+  }
+  @include rwd-mobile(xs) {
+    transform: scale(.5);
+    margin-bottom: 30px
+  }
+  @media only screen and (max-width: 374px ) {
+    transform: scale(.4);
+    margin-bottom: 20px
+  }
+  > div {
+    flex: 0 0 (64px+80px);
+    &.active {
+      > .item {
+        &:after {
+          content: '';
+          display: block;
+          width: 80px;
+          border-top: 5px dashed #002247;
+          position: absolute;
+          top: 28px;
+          right: 100%;
+        }
+      }
+      
+    }
+    &:last-child {
+      margin-right: 0;
+      flex: 0 0 64px;
+    }
+    &:first-child > .item {
+      &:after {
+        content: none;
+      }
+    }
+    > .item {
+      flex: 0 0 64px;
+      width: 64px;
+      height: 66px;
+      position: relative;
+      
+      &:before {
+        position: absolute;
+        content: '';
+        display: block;
+        background-image: url(#{$img}game/kungfu_01_act.png);
+        background-size: 100% auto;
+        background-position: center;
+      }
+    }
+  }
+}
+.resultBlock {
+  width: 100%;
+  padding-bottom: 54%;
+  background: #FFF;
+  box-shadow: 1.5px 2.6px 10px 0 rgba(0, 0, 0, 0.35);
+  border-radius: 20px;
+  position: relative;
+  margin-top: 61px;
+  margin-bottom: 50px;
+  @include rwd-mobile(sm){
+    margin-top: 26px;
+    margin-bottom: 32px;
+    padding-bottom: 95%;
+  }
+  > img.lg, > img.sm {
+    position: absolute;
+  }
+  > img.sm {
+    display: none;
+    left: (20/334)*100%;
+    bottom: (16/318)*100%;
+    @include rwd-mobile(sm){
+      display: block;
+    }
+  }
+  > img.lg {
+    @include rwd-mobile(sm){
+      display: none;
+    }
+    left: (28/775)*100%;
+    bottom: 29px;
+  }
+}
+
+$transition: transform .6s ease-out, margin-bottom .6s ease-out, opacity 1s ease-in-out;
+
+.kungfuFighting {
+  @include clearul;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding-left: 113px;
+  @include rwd-mobile($rwd){
+    padding-left: 0;
+  }
+  > li {
+    transition: $transition;
+    position: relative;
+    animation-duration: .8s;
+    opacity: 0;
+    z-index: 1;
+    &.bounceInUp, &.bounceInDown {
+      opacity: 1;
+    }
+    @for $i from 1 through 5{
+      $delay: $i;
+      &:nth-child(#{$i}) {
+        // animation-delay: #{$delay}s;
+      }
+    }
+    &.active {//, &:hover {
+      transform: scale(1.27);
+      z-index: 2;
+      .kungfuBlock img.kungfu.active{
+        opacity: 1;
+      }
+      .textBlock {
+        opacity: 1;
+      }
+    }
+  }
+  
+  .kungfuBlock{
+    position: relative;
+  }
+
+  .textBlock {
+    position: absolute;
+    opacity: 0;
+    transition: $transition;
+    img {
+      height: 60px;
+    }
+    @include rwd-mobile($rwd) {
+      display: none;
+    }
+  }
+  .kungfuBlock img.kungfu {
+    width: 100%;
+    &.active {
+      transition: $transition;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
+  }
+  
+}
+

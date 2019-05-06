@@ -1,0 +1,46 @@
+extends ./master.pug
+block urlVariable
+	-
+		var url = './'
+		var activeMenu = 1
+		var articleIndex = 0
+	
+block content
+	include ./components/_variable.pug
+
+	
+	div(class= `article_${articleIndex+1}`)
+		.marketSection.articles
+			.brush_01
+			.title.lens
+				h1
+					div
+						= listaData[articleIndex].div_1
+						i.desktop= ' '
+						br.mobile
+						= listaData[articleIndex].div_2
+			.body
+				.articlesContainer
+					block articleContent
+					a.btn.btnBack(href= url + 'article_list.html')
+						| 返回清單
+					- 
+						var backIndex = (articleIndex-1) === -1 ? 4 : articleIndex-1;
+						var prevIndex = (articleIndex+1) === 5 ? 0 : articleIndex+1;
+					.articleFooter
+						a(href= url + `article_${backIndex+1}.html`)
+							.arrow
+							div(class= `img img_${backIndex+1}`)
+							div
+								h4= listaData[backIndex].div_1
+									br
+									= listaData[backIndex].div_2
+								.tag more
+						a(href= url + `article_${prevIndex+1}.html`)
+							.arrow
+							div(class= `img img_${prevIndex+1}`)
+							div
+								h4= listaData[prevIndex].div_1
+									br
+									= listaData[prevIndex].div_2
+								.tag more

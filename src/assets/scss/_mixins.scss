@@ -1,0 +1,161 @@
+$break-ss: 480px;
+$break-xs: 576px;
+$break-sm: 768px;
+$break-md: 992px;
+$break-lg: 1200px;
+
+$break-alt-ss: 479px;
+$break-alt-xs: 575px;
+$break-alt-sm: 767px;
+$break-alt-md: 991px;
+$break-alt-lg: 1199px;
+
+@mixin rwd-desktop($media) {
+  @if $media == ss {
+    @media only screen and (min-width: $break-ss ) { @content; }
+  }
+  @else if $media == xs {
+    @media only screen and (min-width: $break-xs ) { @content; }
+  }
+  @else if $media == sm {
+    @media only screen and (min-width: $break-sm ) { @content; }
+  }
+  @else if $media == md {
+    @media only screen and (min-width: $break-md ) { @content; }
+  }
+  @else if $media == lg {
+    @media only screen and (min-width: $break-lg ) { @content; }
+  }
+}
+
+@mixin rwd-mobile($media) {
+  @if $media == ss {
+    @media only screen and (max-width: $break-alt-ss ) { @content; }
+  }
+  @else if $media == xs {
+    @media only screen and (max-width: $break-alt-xs ) { @content; }
+  }
+  @else if $media == sm {
+    @media only screen and (max-width: $break-alt-sm ) { @content; }
+  }
+  @else if $media == md {
+    @media only screen and (max-width: $break-alt-md ) { @content; }
+  }
+  @else if $media == lg {
+    @media only screen and (max-width: $break-alt-lg ) { @content; }
+  }
+}
+
+@mixin clearfix() {
+  &:after{
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+
+@mixin clearul() {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@mixin hover($textColor: null, $bgColor: null) {
+  &:hover, &:focus, &:active, &.active{
+    @if ($textColor) { color:      $textColor }
+    @if ($bgColor)   { background: $bgColor }
+    text-decoration: none;
+    outline: none;
+    @content;
+  }
+}
+
+@mixin font($size: null, $height: null, $weight: null, $color: null) {
+  @if ($size)   { font-size:   $size }
+  @if ($height) { line-height: $height }
+  @if ($weight) { font-weight: $weight}
+  @if ($color)  { color:       $color }
+  @content;
+}
+
+$container-width: 100%;
+$container-max-padding: 20px;
+$container-base-width: 970px;
+$container-min-padding: 10px;
+
+@mixin container($base-width: null, $max-padding: null, $min-padding: null) {
+  width: $container-width;
+	margin: 0 auto;
+	
+	@if ($max-padding) { padding-left: $max-padding;           padding-right: $max-padding }
+	@else              { padding-left: $container-max-padding; padding-right: $container-max-padding; };
+	
+	@if ($base-width) { max-width: $base-width }
+	@else             { max-width: $container-base-width };
+	
+	@include rwd-mobile($sm){
+		@if ($min-padding) { padding-left: $min-padding;           padding-right: $min-padding; }
+		@else              { padding-left: $container-min-padding; padding-right: $container-min-padding; };
+	}
+}
+
+@mixin border-box() {
+  box-sizing: border-box;
+}
+
+@mixin aspect-fill(){
+  background-size: cover !important;
+  background-position: center center !important; 
+}
+
+
+@mixin custom-container($gap, $mgap: null, $lgap: null) {
+  padding-left: $gap;
+  padding-right: $gap;
+  .row{
+    margin-left: -$gap;
+    margin-right: -$gap;
+  }
+  [class^=col-]{
+    padding-left: $gap;
+    padding-right: $gap;
+  }
+  [class='col']{
+    padding-left: $gap;
+    padding-right: $gap;
+  }
+  @if ($mgap) {
+    @include respond-to($r-s) {
+      padding-left: $mgap;
+      padding-right: $mgap;
+      .row{
+        margin-left: -$mgap;
+        margin-right: -$mgap;
+      }
+      [class^=col-]{
+        padding-left: $mgap;
+        padding-right: $mgap;
+      }
+      [class='col']{
+        padding-left: $mgap;
+        padding-right: $mgap;
+      }
+    }
+  }
+  @if ($lgap) {
+    @include respond-to($r-m) {
+      padding-left: $lgap;
+      padding-right: $lgap;
+      .row{
+        margin-left: -$lgap;
+        margin-right: -$lgap;
+      }
+      [class='col']{
+        padding-left: $mgap;
+        padding-right: $mgap;
+      }
+    }
+  }
+}

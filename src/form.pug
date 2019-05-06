@@ -1,0 +1,293 @@
+extends ./layouts/master.pug
+block urlVariable
+	- var url = './'
+	- var activeMenu = 3
+block content
+	-
+		var indexLists = [
+			{ name: '趨勢', text: [ '保德信', '全球醫療生化基金' ], url: '#' },
+			{ name: '成長', text: [ '保德信', '金滿意基金' ], url: '#' },
+			{ name: '靈活', text: [ '保德信', '策略成長ETF', '組合基金' ], url: '#' },
+			{ name: '息收', text: [ '保德信', '印度機會債券基金' ], note: '(本基金有相當比重投資於非投資等級之高風險債券且基金之配息來源可能為本金)', url: '#' },
+			{ name: '成長', text: [ '保德信', '中國品牌基金' ], url: '#' },
+		]
+	// Modal 
+	.modal.fade#privacyModal(tabindex='-1', role='dialog', aria-hidden='true')
+		.modal-dialog.modal-dialog-centered.modal-lg(role='document')
+			.modal-content
+				.modal-header
+					h5.modal-title 個人資料蒐集及使用方式
+					button.close(type='button', data-dismiss='modal', aria-label='Close')
+				.modal-body
+					ul
+						li 
+							span (一)
+							| 在您使用保德信證券投資信託股份有限公司（以下簡稱「本公司」）網站服務之前，請詳閱本政策內容，瞭解我們蒐集您個人資料的相關資訊，以保障您的權利。
+						li
+							span (二)
+							| 本公司為辦理證券投資信託相關業務及其他合於本公司之營業項目或主管機關所核准之業務、客戶管理及、提供服務、及行銷之目的向您蒐集個人資料，包括：姓名、性別、出生年月日、聯絡電話、電子郵件信箱、地址等。
+						li
+							span (三)
+							| 本公司將以電話、傳真、書面、e-mail、簡訊或其他適當方式，定期（不定期）對您提供金融投資相關訊息、行銷活動及廣告，在此期間，您的資料將於中華民國境內被處理、利用及/或國際傳輸予本公司委託辦理與以上活動相關業務之第三人，直至前述事由與目的全部消失、或被終止之日。
+						li
+							span (四)
+							| 為了聯絡傳遞及資訊之正確性，若您選擇不提供相關資料，或資料不完整時，本公司將無法提供您完善的服務。
+						li
+							span (五)
+							| 您得以向本公司請求行使以下權利：一、查詢或請求閱覽。二、請求製給複製本。三、請求補充或更正。四、請求停止蒐集、處理或利用。五、請求刪除。可透過網路取消訂閱，或免付費電話0800-212-069，或網路客服，或傳真電話：(02)2763-8889，由專人為您服務。謝謝！
+	.modal.fade#comfirmModal(tabindex='-1', role='dialog', aria-hidden='true')
+		.modal-dialog.modal-dialog-centered.modal-sm(role='document')
+			.modal-content
+				.modal-header
+					h5.modal-title 資料已送出
+					button.close(type='button', data-dismiss='modal', aria-label='Close')
+				.modal-body
+					p 我們已收到您的資料，將盡快與您連絡。
+						br
+						| 您亦可直接電洽 02-8172-5588 由專人為您服務。
+						br
+						| 謝謝!
+	.indexContent.form
+		.container
+			.bursh_01
+			.bursh_02
+			
+			div#index_container
+				.banner
+					img.title(src= url + 'assets/imgs/img_title_b.png')
+				.formBlock
+					.people
+					p 描繪您的理想生活，更要付諸行動，讓理想不只是夢想。留下您的資料，我們將盡速與您連絡，讓您投資力全開，Fund大財富夢想！
+					mixin Radio(items, group)
+						label.col-form-label(id= group.name)= group.label
+						div
+							div(class= group.isInline ? 'flexBox' : null)
+								each item in items
+									div(class= group.isInline ? 'custom-control custom-radio custom-control-inline' : 'custom-control custom-radio')
+										input.custom-control-input(id= `Radio${item.id}` type='radio', name= group.name, value= item.value)
+										label.custom-control-label(for=`Radio${item.id}`)= item.label
+							small.invalid-feedback
+					mixin RodioBox(group)
+						.form-group.checkBox
+							div(class= group.isInline ? 'flexBox checkBox' : '')
+								+Radio(group.radios, group)
+
+					-
+						var radioSets = [
+							{ name: 'Value01',
+								label: '是否為保德信投信客戶',
+								isInline: true,
+								radios: [
+									{ id: '11', value: 1, label: '是' },
+									{ id: '12', value: 0, label: '否' },
+								]
+							},
+							{ name: 'Value02',
+								label: '請問您最希望保德信投信提供什麼服務?',
+								radios: [
+									{ id: '21', value: 1, label: '我近一個月想投資，請先Email理財資訊給我'},
+									{ id: '22', value: 2, label: '我想參加保德信理財講座，有活動時請通知我'}
+								]
+							},
+							{ name: 'Value03',
+								label: '請問您未來半年內打算用於投資的資金有多少？',
+								radios: [
+									{ id: '31', value: 1, label: '10萬以下'},
+									{ id: '32', value: 2, label: '10萬~30萬'},
+									{ id: '33', value: 3, label: '30萬~50萬'},
+									{ id: '34', value: 4, label: '50萬~100萬'},
+									{ id: '35', value: 5, label: '100萬以上'},
+									{ id: '36', value: 6, label: '目前沒有打算投資'},
+								]
+							}
+						]
+					form#Form(action="" method="post")
+						.message
+							span 我們已收到您的資料，將盡快與您連絡。
+								br
+								| 您亦可直接電洽 02-8172-5588 由專人為您服務。
+								br
+								| 謝謝!
+						.inputBox
+							.form-group
+								.flexBox
+									label.col-form-label 姓名
+									input.form-control#CustomName(type='text', placeholder='請輸入您的姓名' name='CustomName')
+								small.invalid-feedback
+							.form-group
+								.flexBox
+									label.col-form-label 手機號碼
+									input.form-control#CustomCellphone(type='tel', placeholder='請填寫您的手機號碼' name='CustomCellphone')
+								small.invalid-feedback
+							.form-group
+								.flexBox
+									label.col-form-label 電子郵件
+									input.form-control#CustomEmail(type='email', placeholder='請填寫您的電子信箱')
+								small.invalid-feedback
+							+RodioBox(radioSets[0])
+							+RodioBox(radioSets[1])
+							+RodioBox(radioSets[2])
+								
+							.form-group.checkBox
+								.custom-control.custom-checkbox
+									input.custom-control-input#isAgree(type='checkbox' name='isAgree')
+									label.custom-control-label(for='isAgree' id='isAgree') 本人已閱讀、瞭解保德信投信
+										a.openModal(href="#") 個人資料蒐集及使用方式
+									small.invalid-feedback
+						.footBtn
+							button.btn.btn-secondary#submitBtn(type='button')
+								| 送出
+block script
+	script(src= url + 'assets/plugins/jquery-validation/jquery.validate.min.js')
+	script(src= url + 'assets/plugins/jquery-validation/additional-methods.min.js')
+	script(src= url + 'assets/plugins/jquery-validation/localization/messages_zh_TW.min.js')
+	script.
+		
+		
+		$( document ).ready(function() {
+			
+			var CONFIG = {
+				//- URL: "/WebApi/api/Event", // 通用
+				//- URL: "http://pruuat.sobo.com.tw/WebApi/api/Event", // sobo測試
+				//- URL: "http://www.pru.com.tw:81/WebApi/api/Event", // 保德信測試
+				URL: "https://www.pru.com.tw/WebApi/api/Event", // 保德信正式
+				//- EventSessionGUID: '4989cec1-7196-40b3-a06c-92f47fa67b00', // sobo測試
+				EventSessionGUID: 'dcb566a0-801f-42c7-a3d1-d112d5e23d4e', // 保德信正式
+				//- EventSessionGUID: '84005b56-3f08-4a9d-b67f-829cb2d5b9a8', // 保德信測試
+			}
+
+			$("#Form").validate({
+				ignore:'',
+				onfocusout: false,
+				rules: {
+					CustomName: { required: true },
+					CustomCellphone: {
+						required: true,
+						pattern: "[0-9]+",
+						minlength: 10,
+						maxlength: 10
+					},
+					Value01: { required: true },
+					Value02: { required: true },
+					Value03: { required: true },
+					CustomEmail: {
+						email: true
+					},
+					isAgree: { required: true },
+				},
+				errorClass: 'empty',
+				messages: {
+						CustomName: "請填寫姓名",
+						CustomCellphone: {
+							required: "請填手機號碼",
+							minlength: '必須為10碼數字',
+							maxlength: '必須為10碼數字',
+							pattern: '必須為10碼數字'
+						},
+						CustomEmail: {
+								email: "請填寫正確的電子郵件格式"
+						},
+						isAgree: '此為必填欄位',
+				},
+				invalidHandler: function(event, validator) {
+					//- console.log(event, validator)
+				},
+				errorPlacement: function(error, element) {
+					var errorPlace = element.parents('.form-group').find('.invalid-feedback');
+					element.parents('.form-group').find('.invalid-feedback').html(error.html());
+					element.parents('.form-group').addClass('animated shake invalid')
+					element.addClass('is-invalid')
+				}
+			});
+
+			$("#submitBtn").click(function(){
+
+				var data = {
+					EventSessionGUID: CONFIG.EventSessionGUID,
+					CustomName: $('#CustomName').val(),
+					CustomCellphone: $('#CustomCellphone').val(),
+					CustomEmail: $('#CustomEmail').val(),
+					Value01: parseInt($("input[name='Value01']:checked").val(), 10),
+					Value02: parseInt($("input[name='Value02']:checked").val(), 10),
+					Value03: parseInt($("input[name='Value03']:checked").val(), 10),
+					isAgree : $("#isAgree").is(":checked")
+				}
+				Object.keys(data).map(function (item){
+					handleErrors(item, true)
+				})
+				
+				if ($("#Form").valid()) {
+					console.log(data)
+					submitForm(data)
+				}else{
+					
+					console.log(data)
+					return false
+				}
+				
+				
+				function submitForm(data){
+					$('#submitBtn').attr('disabled', true);
+					$.ajax({
+						method: "POST",
+						contentType: "application/json",
+						url: CONFIG.URL,
+						data: JSON.stringify(data),
+					}).done(function (e) {
+						$('#submitBtn').attr('disabled', false);
+						$([document.documentElement, document.body]).animate(
+							{ scrollTop: 0},
+							800,
+							function () {
+								$('.message').fadeIn('slow');
+								setTimeout(function (){
+									$('.message').fadeOut('slow');
+								}, 5200);
+							}
+						);
+						$("#Form")[0].reset();
+						//- $('#comfirmModal').modal('show');
+						self.showList = 3;
+						
+						
+					}).fail(function (jqXHR, textStatus, errorThrown) {
+						
+						$('#submitBtn').attr('disabled', false);
+						self.sending = false;
+
+						var res = JSON.parse(jqXHR.responseText);
+
+						var errors = res.responseStatus.errors || [];
+						if ( errors.length > 0 ) {
+							$('form').addClass('')
+						}
+						errors.map(function(item){
+							handleErrors(item, false);
+						})
+						console.log('1111', errors)
+						console.log(JSON.parse(jqXHR.responseText))
+					});
+				}
+				
+			});
+			
+		}).on("tap click", 'label .openModal', function( event, data ){
+					event.stopPropagation();
+					event.preventDefault();
+					$('#privacyModal').modal('show');
+					return false;
+		});
+
+
+		function handleErrors(name, isValid) {
+			if (isValid) {
+				$('#'+ name).parents('.form-group').find('.invalid-feedback').html('');
+				$('#'+ name).parents('.form-group').removeClass('shake animated invalid');
+				$('#'+ name).removeClass('is-invalid')
+			}else{
+				$('#'+item.fieldName).parents('.form-group').find('.invalid-feedback').html(item.message);
+				$('#'+item.fieldName).parents('.form-group').addClass('animated shake invalid');
+				$('#'+ name).addClass('is-invalid')
+			}
+		}
+		

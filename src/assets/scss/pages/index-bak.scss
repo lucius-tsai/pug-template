@@ -1,0 +1,342 @@
+@import "../mixins";
+@import "../variable";
+
+
+.indexList > li .kungfuBlock .kungfu {
+  opacity: 0;
+}
+
+.indexList h5 {
+  &.hide {
+    opacity: 0;
+  }
+  
+}
+
+.indexContent {
+  background-image: url(#{$img}bg_index.png);
+  background-size: 1880px auto;
+  background-position: center -106px;
+  overflow: hidden;
+  position: relative;
+  .bursh_01, .bursh_02 {
+    position: absolute;
+    opacity: 0;
+    &:after {
+      content: '';
+      display: block;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+  .bursh_01 {
+    width: 630px;
+    top: -105px;
+    right: -260px;
+    &:after {
+      background-image: url(#{$img}bg_bursh_01.png);
+      width: 100%;
+      padding-bottom: 67.77%;
+    }
+    @media only screen and (max-width: 1280px ) {
+      right: -290px;
+    }
+    @include rwd-mobile(lg) {
+      display: none;
+    }
+  }
+  
+  .bursh_02 {
+    bottom: -138px;
+    right: 752px;
+    width: 397px;
+    &:after {
+      background-image: url(#{$img}bg_bursh_02.png);
+      width: 100%;
+      padding-bottom: 72.796%;
+    }
+    @media only screen and (max-width: 1280px ) {
+      right: 722px;
+    }
+    @include rwd-mobile(lg) {
+      right: auto;
+      left: -10%;
+    }
+  }
+  
+  .container {
+    @include container (1372px);
+    padding-top: 40px;
+    position: relative;
+    height: 860px;
+    @include rwd-mobile(lg) {
+      display: flex;
+      flex-direction: column;
+      height: auto;
+      align-items: center;
+      > div {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  }
+  .banner {
+    position: absolute;
+    left: 20px;
+    top: 40px;
+    z-index: 5;
+    .title {
+      width: 777px;
+    }
+    .subTitle {
+      position: absolute;
+      width: 478px;
+      top: 90px;
+      left: 518px;
+    }
+    @include rwd-mobile(lg) {
+      position: relative;
+      left: auto;
+      top: auto;
+      width: 660px;
+      margin: 0 auto;
+      .title {
+        width: 660px;
+      }
+      .subTitle {
+        width: 555px;
+        position: relative;
+        left: auto;
+        top: auto;
+        margin-left: 35px;
+        margin-top: 20px;
+      }
+    }
+  }
+  
+}
+.kungfuBlock {
+  position: absolute;
+  transition: .3s all;
+  h5 {
+    position: absolute;
+    margin-bottom: 0;
+    font-weight: 600;
+    .note_i {
+      color: #444444;
+      margin-top: 3px;
+    }
+  }
+}
+.indexList {
+  position: absolute;
+  top: 240px;
+  right: 115px;
+  @include clearul;
+  display: flex;
+
+  > li .power {
+    width: 107px;
+  }
+
+  $listWidth: 196 206 177 228 183;
+  $kungfuWidth: 158 147 109 86 200;
+  @media only screen and (max-width: 1280px ) {
+    right: 85px;
+  }
+  
+  > li {
+    position: relative;
+    opacity: 0;
+    &.bounceInUp, &.bounceInDown {
+      opacity: 1;
+    }
+  }
+
+  > li:nth-child(1){
+    margin-right: -20px;
+    margin-top: 160px;
+    .kungfuBlock {
+      right: 153px;
+      top: 141px;
+      width: 160px;
+      > img {
+        margin-top: 55px;;
+      }
+    }
+  }
+  > li:nth-child(2){
+    margin-top: 70px;
+    margin-right: 18px;
+    .kungfuBlock {
+      flex-direction: column;
+      position: absolute;
+      left: 10px;
+      top: 325px;
+      width: 160px;
+      h5 {
+        position: absolute;
+        left: 120px;
+        top: 30px;
+        width: 120px;
+      }
+    }
+    > a {
+      display: block;
+      position: relative;
+    }
+  }
+  > li:nth-child(3){
+    margin-top: 260px;
+    margin-right: -5px;
+    .kungfuBlock {
+      top: -120px;
+      img {
+        margin-left: 70px;
+      }
+      h5 {
+        bottom: 0;
+      }
+    }
+  }
+  > li:nth-child(4){
+    margin-right: -25px;
+    .kungfuBlock {
+      bottom: -155px;
+      left: 77px;
+      h5 {
+        left: -57px;
+        top: 170px;
+        width: 261px;
+      }
+    }
+  }
+  > li:nth-child(5){
+    margin-top: 142px;
+    .kungfuBlock {
+      top: -80px;
+      left: 50px;
+    }
+  }
+  h5 {
+    font-size: 20px;
+    line-height: 24px;
+    color: #001f49;
+  }
+  > li > a {
+    display: block;
+    position: relative;
+    transition: .3s all;
+    @include hover(){
+      text-decoration: none;
+      opacity: .8;
+    }
+    > img {
+      flex: 0 0 auto;
+    }
+  }
+  
+  @each $number in $listWidth {
+    $i: index($listWidth, $number);
+    > li:nth-child(#{$i}) {
+      .text {
+        width: #{$number}px;
+      }
+      .kungfu {
+        width: #{nth($kungfuWidth, $i)}px;
+      }
+    }
+  }
+  @include rwd-mobile(lg) {
+    %clickIcon{
+      content: '';
+      width: 35px;
+      height: 35px;
+      display: block;
+      background-image: url(#{$img}ico_index_click.png);
+      background-size: 100% auto;
+      background-repeat: no-repeat;
+      position: absolute;
+    }
+    right: auto;
+    top: auto;
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 80px;
+    h5 {
+      display: none;
+    }
+    
+    > li:nth-child(1){
+      margin-right: -70px;
+      margin-top: 200px;
+      .kungfuBlock{
+        left: -16px;
+        top: -120px;
+        img {
+          margin-top: 0;
+        }
+      }
+      &:after{
+        @extend %clickIcon;
+        bottom: -50px;
+        left: 55px;
+      }
+    }
+    > li:nth-child(2){
+      margin-top: 70px;
+      margin-right: -44px;
+      &:after{
+        @extend %clickIcon;
+        top: -35px;
+        left: 85px;
+      }
+      .kungfuBlock{
+        left: 35px;
+        top: 330px;
+      }
+    }
+    > li:nth-child(3){
+      margin-top: 206px;
+      margin-right: -57px;
+      &:after{
+        @extend %clickIcon;
+        bottom: -10px;
+        left: 70px;
+      }
+      .kungfuBlock{
+        top: -113px;
+        left: 20px;
+        img {
+          margin-left: 0;
+        }
+      }
+    }
+    > li:nth-child(4){
+      margin-right: -80px;
+      &:after{
+        @extend %clickIcon;
+        bottom: 45px;
+        left: 80px;
+      }
+      .kungfuBlock {
+        bottom: -136px;
+        left: 59px;
+      }
+    }
+    > li:nth-child(5){
+      margin-top: 148px;
+      &:after{
+        @extend %clickIcon;
+        bottom: 25px;
+        left: 70px;
+      }
+      .kungfuBlock {
+        top: -140px;
+        left: -26px;
+      }
+    }
+  }
+}
+

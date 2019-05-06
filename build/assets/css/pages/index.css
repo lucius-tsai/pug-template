@@ -1,0 +1,389 @@
+.indexList > li .kungfuBlock .kungfu {
+  opacity: 0; }
+
+.indexList h5.hide {
+  opacity: 0; }
+
+.indexContent {
+  background-image: url(../../assets/imgs/bg_index.png);
+  background-size: 1880px auto;
+  background-position: center -106px;
+  overflow: hidden;
+  position: relative; }
+  .indexContent .bursh_01, .indexContent .bursh_02 {
+    position: absolute;
+    opacity: 0; }
+    .indexContent .bursh_01:after, .indexContent .bursh_02:after {
+      content: '';
+      display: block;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center; }
+  .indexContent .bursh_01 {
+    width: 630px;
+    top: -105px;
+    right: -260px; }
+    .indexContent .bursh_01:after {
+      background-image: url(../../assets/imgs/bg_bursh_01.png);
+      width: 100%;
+      padding-bottom: 67.77%; }
+    @media only screen and (max-width: 1280px) {
+      .indexContent .bursh_01 {
+        right: -290px; } }
+    @media only screen and (max-width: 1199px) {
+      .indexContent .bursh_01 {
+        display: none; } }
+  .indexContent .bursh_02 {
+    bottom: -158px;
+    right: 775px;
+    width: 397px; }
+    .indexContent .bursh_02:after {
+      background-image: url(../../assets/imgs/bg_bursh_02.png);
+      width: 100%;
+      padding-bottom: 72.796%; }
+    @media only screen and (max-width: 1280px) {
+      .indexContent .bursh_02 {
+        right: 722px; } }
+    @media only screen and (max-width: 1199px) {
+      .indexContent .bursh_02 {
+        right: auto;
+        left: -10%; } }
+  .indexContent .container {
+    width: 100%;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    max-width: 1372px;
+    padding-top: 40px;
+    position: relative;
+    height: 860px; }
+    @media only screen and (max-width: 767px) {
+      .indexContent .container {
+        padding-left: 10px;
+        padding-right: 10px; } }
+    @media only screen and (max-width: 1199px) {
+      .indexContent .container {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        height: auto;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center; }
+        .indexContent .container > div {
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+          flex-direction: column;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center; } }
+  .indexContent .banner {
+    position: absolute;
+    left: 20px;
+    top: 40px;
+    z-index: 5; }
+    .indexContent .banner .title {
+      width: 777px; }
+    .indexContent .banner .subTitle {
+      position: absolute;
+      width: 478px;
+      top: 90px;
+      left: 518px; }
+    @media only screen and (max-width: 1199px) {
+      .indexContent .banner {
+        position: relative;
+        left: auto;
+        top: auto;
+        width: 660px;
+        margin: 0 auto; }
+        .indexContent .banner .title {
+          width: 660px; }
+        .indexContent .banner .subTitle {
+          width: 555px;
+          position: relative;
+          left: auto;
+          top: auto;
+          margin-left: 35px;
+          margin-top: 20px; } }
+
+.kungfuBlock {
+  position: absolute;
+  -webkit-transition: .3s all;
+  transition: .3s all;
+  z-index: 2; }
+  .kungfuBlock h5 {
+    position: absolute;
+    margin-bottom: 0;
+    font-weight: 600; }
+    .kungfuBlock h5 .note_i {
+      color: #444444;
+      margin-top: 3px; }
+
+.indexList {
+  position: absolute;
+  top: 240px;
+  right: 115px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+  @media only screen and (min-width: 1200px) {
+    .indexList {
+      top: 216px;
+      right: 147px; } }
+  .indexList > li .power {
+    width: 107px;
+    position: absolute;
+    z-index: 1; }
+    @media only screen and (max-width: 1199px) {
+      .indexList > li .power {
+        display: none; } }
+  @media only screen and (max-width: 1280px) {
+    .indexList {
+      right: 85px; } }
+  .indexList > li {
+    position: relative;
+    opacity: 0; }
+    .indexList > li.bounceInUp, .indexList > li.bounceInDown {
+      opacity: 1; }
+  .indexList > li:nth-child(1) {
+    margin-right: -20px;
+    margin-top: 160px; }
+    @media only screen and (min-width: 1200px) {
+      .indexList > li:nth-child(1) {
+        margin-top: 140px; } }
+    .indexList > li:nth-child(1) .power {
+      left: 20px;
+      bottom: -88px; }
+    .indexList > li:nth-child(1) .kungfuBlock {
+      right: 153px;
+      top: 141px;
+      width: 160px; }
+      .indexList > li:nth-child(1) .kungfuBlock > img {
+        margin-top: 55px; }
+      @media only screen and (min-width: 1200px) {
+        .indexList > li:nth-child(1) .kungfuBlock {
+          top: 171px; } }
+  .indexList > li:nth-child(2) {
+    margin-top: 70px;
+    margin-right: 18px; }
+    @media only screen and (min-width: 1200px) {
+      .indexList > li:nth-child(2) {
+        margin-top: 93px; } }
+    .indexList > li:nth-child(2) .power {
+      left: 40px;
+      bottom: -76px; }
+    .indexList > li:nth-child(2) .kungfuBlock {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      position: absolute;
+      left: 10px;
+      top: 325px;
+      width: 160px; }
+      @media only screen and (min-width: 1200px) {
+        .indexList > li:nth-child(2) .kungfuBlock {
+          left: -19px;
+          top: 355px; } }
+      .indexList > li:nth-child(2) .kungfuBlock h5 {
+        position: absolute;
+        left: 120px;
+        top: 30px;
+        width: 120px; }
+        @media only screen and (min-width: 1200px) {
+          .indexList > li:nth-child(2) .kungfuBlock h5 {
+            left: 129px;
+            top: 42px; } }
+    .indexList > li:nth-child(2) > a {
+      display: block;
+      position: relative; }
+  .indexList > li:nth-child(3) {
+    margin-top: 260px;
+    margin-right: -5px; }
+    @media only screen and (min-width: 1200px) {
+      .indexList > li:nth-child(3) {
+        margin-top: 230px;
+        margin-right: 20px; } }
+    .indexList > li:nth-child(3) .power {
+      left: 23px;
+      bottom: -82px; }
+    .indexList > li:nth-child(3) .kungfuBlock {
+      top: -120px; }
+      @media only screen and (min-width: 1200px) {
+        .indexList > li:nth-child(3) .kungfuBlock {
+          top: -104px;
+          left: 5px; } }
+      .indexList > li:nth-child(3) .kungfuBlock img {
+        margin-left: 70px; }
+      .indexList > li:nth-child(3) .kungfuBlock h5 {
+        bottom: 0; }
+        @media only screen and (min-width: 1200px) {
+          .indexList > li:nth-child(3) .kungfuBlock h5 {
+            bottom: 19px;
+            left: -10px; } }
+  .indexList > li:nth-child(4) {
+    margin-right: -25px;
+    z-index: 3; }
+    .indexList > li:nth-child(4) .power {
+      left: 29px;
+      bottom: -82px; }
+    .indexList > li:nth-child(4) .kungfuBlock {
+      bottom: -155px;
+      left: 77px; }
+      @media only screen and (min-width: 1200px) {
+        .indexList > li:nth-child(4) .kungfuBlock {
+          bottom: -213px;
+          left: 88px; } }
+      .indexList > li:nth-child(4) .kungfuBlock h5 {
+        left: -57px;
+        top: 170px;
+        width: 261px; }
+        @media only screen and (min-width: 1200px) {
+          .indexList > li:nth-child(4) .kungfuBlock h5 {
+            left: -90px;
+            top: 162px; } }
+  .indexList > li:nth-child(5) {
+    margin-top: 142px; }
+    @media only screen and (min-width: 1200px) {
+      .indexList > li:nth-child(5) {
+        margin-top: 182px;
+        margin-left: 26px; } }
+    .indexList > li:nth-child(5) .power {
+      left: 16px;
+      bottom: -82px; }
+    .indexList > li:nth-child(5) .kungfuBlock {
+      top: -80px;
+      left: 50px; }
+      @media only screen and (min-width: 1200px) {
+        .indexList > li:nth-child(5) .kungfuBlock {
+          top: -95px;
+          left: 32px; } }
+  .indexList h5 {
+    font-size: 20px;
+    line-height: 24px;
+    color: #001f49; }
+  .indexList > li > a {
+    display: block;
+    position: relative;
+    -webkit-transition: .3s all;
+    transition: .3s all; }
+    .indexList > li > a:hover, .indexList > li > a:focus, .indexList > li > a:active, .indexList > li > a.active {
+      text-decoration: none;
+      outline: none;
+      text-decoration: none;
+      opacity: .8; }
+    .indexList > li > a > img {
+      -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+      flex: 0 0 auto;
+      display: block; }
+  .indexList > li:nth-child(1) .text {
+    width: 196px; }
+    @media only screen and (min-width: 1200px) {
+      .indexList > li:nth-child(1) .text {
+        width: 180.908px; } }
+  .indexList > li:nth-child(1) .kungfu {
+    width: 158px; }
+  .indexList > li:nth-child(2) .text {
+    width: 206px; }
+    @media only screen and (min-width: 1200px) {
+      .indexList > li:nth-child(2) .text {
+        width: 190.138px; } }
+  .indexList > li:nth-child(2) .kungfu {
+    width: 147px; }
+  .indexList > li:nth-child(3) .text {
+    width: 177px; }
+    @media only screen and (min-width: 1200px) {
+      .indexList > li:nth-child(3) .text {
+        width: 163.371px; } }
+  .indexList > li:nth-child(3) .kungfu {
+    width: 109px; }
+  .indexList > li:nth-child(4) .text {
+    width: 228px; }
+    @media only screen and (min-width: 1200px) {
+      .indexList > li:nth-child(4) .text {
+        width: 210.444px; } }
+  .indexList > li:nth-child(4) .kungfu {
+    width: 86px; }
+  .indexList > li:nth-child(5) .text {
+    width: 183px; }
+    @media only screen and (min-width: 1200px) {
+      .indexList > li:nth-child(5) .text {
+        width: 168.909px; } }
+  .indexList > li:nth-child(5) .kungfu {
+    width: 200px; }
+  @media only screen and (max-width: 1199px) {
+    .indexList {
+      right: auto;
+      top: auto;
+      position: relative;
+      margin-top: 20px;
+      margin-bottom: 80px; }
+      .indexList > li:nth-child(1):after, .indexList > li:nth-child(2):after, .indexList > li:nth-child(3):after, .indexList > li:nth-child(4):after, .indexList > li:nth-child(5):after {
+        content: '';
+        width: 35px;
+        height: 35px;
+        display: block;
+        background-image: url(../../assets/imgs/ico_index_click.png);
+        background-size: 100% auto;
+        background-repeat: no-repeat;
+        position: absolute; }
+      .indexList h5 {
+        display: none; }
+      .indexList > li:nth-child(1) {
+        margin-right: -70px;
+        margin-top: 200px; }
+        .indexList > li:nth-child(1) .kungfuBlock {
+          left: -16px;
+          top: -120px; }
+          .indexList > li:nth-child(1) .kungfuBlock img {
+            margin-top: 0; }
+        .indexList > li:nth-child(1):after {
+          bottom: -50px;
+          left: 55px; }
+      .indexList > li:nth-child(2) {
+        margin-top: 70px;
+        margin-right: -44px; }
+        .indexList > li:nth-child(2):after {
+          top: -35px;
+          left: 85px; }
+        .indexList > li:nth-child(2) .kungfuBlock {
+          left: 35px;
+          top: 330px; }
+      .indexList > li:nth-child(3) {
+        margin-top: 206px;
+        margin-right: -57px; }
+        .indexList > li:nth-child(3):after {
+          bottom: -10px;
+          left: 70px; }
+        .indexList > li:nth-child(3) .kungfuBlock {
+          top: -113px;
+          left: 20px; }
+          .indexList > li:nth-child(3) .kungfuBlock img {
+            margin-left: 0; }
+      .indexList > li:nth-child(4) {
+        margin-right: -80px; }
+        .indexList > li:nth-child(4):after {
+          bottom: 45px;
+          left: 80px; }
+        .indexList > li:nth-child(4) .kungfuBlock {
+          bottom: -136px;
+          left: 59px; }
+      .indexList > li:nth-child(5) {
+        margin-top: 148px; }
+        .indexList > li:nth-child(5):after {
+          bottom: 25px;
+          left: 70px; }
+        .indexList > li:nth-child(5) .kungfuBlock {
+          top: -140px;
+          left: -26px; } }
+
+/*# sourceMappingURL=index.css.map */

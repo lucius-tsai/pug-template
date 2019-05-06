@@ -1,0 +1,100 @@
+extends ./layouts/master.pug
+block urlVariable
+	- var url = './'
+	- var activeMenu = 2
+
+include ./layouts/components/pug_mixins
+
+block content
+
+	.part_1
+		section.powerSection
+			+titleBlock()
+				span 保德信印度機會債券基金
+				br
+				span (本基金有相當比重投資於非投資等級之
+				br
+				span 高風險債券且基金之配息來源可能為本金)
+			
+			.subTitleBox
+				.subTitle
+					label
+						span 最適合
+						br
+						| 這樣的您
+					ul
+						li 以固定收益為核心
+						li 追求收益成長
+						li 已持有高收益債
+			.container
+				h3.altTitle
+					div
+						span 擁抱息收力
+						span 印度好收益
+				p 印度公債目前殖利率達7%以上，高收益優勢深具投資魅力，而全球市場變化快速，資金在追求穩定收益的驅使下，將往表現相對穩健的債市靠攏，更有助於印度債後市表現。今年因通膨受控，印度央行4月份再度降息，預期六月份仍會降息一碼，短券受惠於降息激勵，建議適時將印度短債納入投資組合中。
+			
+
+
+		section.powerSection.subSection
+			.container
+				h3.altTitle.sec.white
+					div
+						i.ico.ico_01
+						| 基金優勢
+			.container_sm.kissContainer
+				h4.skewTitle
+					span
+						i KISS印度優質收益力
+				+hasLabel('K', 'bigWord')
+					span
+						| now-How
+						i 專業團隊 在地深耕
+				p 全球資產管理先驅PGIM India為印度當地領導性金融集團，透過堅實的專業團隊，深耕在地市場，在印度總資產規模達2,298億盧比。
+				.note 資料來源：PGIM India，資料日期：2018/11。
+				+hasLabel('I', 'bigWord')
+					span
+						| ncome
+						i 高收益機會 首選印度債
+				p 印度公債殖利率不僅具備高殖利率優勢，位居新興市場國家前段班，同時信用狀況為投資等級債水準，優於高收益債券。
+				.describe 
+					p 各主要市場及債券種類殖利率(%)
+				.fig.fig_01
+				.note 資料來源：Bloomberg。資料期間：截至2019/4/15。註：評等為穆迪對各國長期債務評等。註1：含公司債、公債，不含資產擔保型債券，且到期天數超過2年，為彭博所認可之境內債券。註2：穆迪於2017年調升印度長期評等。殖利率採用當期十年公債殖利率。全球投資級債、新興市場當地債、全球高收益債均採用Bloomberg Barclays指數，殖利率為目前平均殖利率。
+					br
+					br
+					| 本資料所示之指數係為說明或舉例之目的，並非推薦投資，且未必為保德信投信所管理基金之對比指數及或持有之部位。債券殖利率不代表基金報酬率不，亦不代表基金配息率，且殖利率不代表未來殖利率；基金淨值可能因市場因素而上下波動。
+				+hasLabel('S', 'bigWord')
+					span
+						| hort
+						i 存續期短 波動防禦力強
+				p 首選短存續期的高評等印度債券，不但有機會參與高殖利率的收益效果，短存續期特性能在升息環境中具備較佳的防禦力，帶領投資人渡過短期市場波動，擁抱甜蜜收益。
+				.fig.fig_03
+				.note 資料來源：保德信投信整理，2019/2。
+					br
+					| 本資料所示之指數係為說明或舉例之目的，並非推薦投資，且未必為保德信投信所管理基金之對比指數及或持有之部位。債券殖利率不代表基金報酬率不，亦不代表基金配息率，且殖利率不代表未來殖利率；基金淨值可能因市場因素而上下波動。
+				+hasLabel('S', 'bigWord')
+					span
+						| trength
+						i 投資級優勢 信用水準佳
+				p 2017年國際信評機構穆迪調升印度長期評等，並強調印度經濟、制度改革的持續進步，將鞏固印度的高增長動能。
+
+
+			
+				.describe
+					p 印度公債信用評等逐年提升
+				.fig.fig_02(style='margin-bottom: 0')
+					.note(style='margin-bottom: 0') 資料來源：穆迪，Bloomberg，保德信投信整理，2019/2。
+		section.powerSection.bottom
+			.container
+				h3.altTitle.sec
+					div
+						i.ico.ico_02
+						| 基金績效表現
+			.kissContainer
+				.note.big 註：依中華民國證券投資信託顧問商業同業公會會員及其銷售從事廣告及營業活動行為規範，第十二條第二項規定：以基金績效作為廣告者，基金需成立滿六個月以上者，始能刊登。
+				+powerBtn('息收力', 'http://www.pru.com.tw/uploadfiles/2019/201904/India.pdf')
+
+				
+
+block script
+	script(src= url + 'assets/js/handleTitle.js')

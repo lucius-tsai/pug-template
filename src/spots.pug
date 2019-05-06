@@ -1,0 +1,101 @@
+extends ./layouts/master.pug
+block urlVariable
+	- var url = './'
+	- var activeMenu = 3
+
+mixin handleBR(array, hasBr)
+	each text, key in array
+		if key === 0
+			= text
+			if (hasBr)
+				br
+		else
+			= text
+
+mixin handleSpan(array, hasBr)
+	each text, key in array
+		if key === 0
+			= text
+			if (hasBr)
+				br
+		else
+			span= text
+
+block content
+	include ./layouts/components/data.pug
+	.bgContent.spots
+		.bursh_01
+		.bursh_02
+		.spotContainer
+			h2 保德信投信旗鑑基金
+				span 銷售機構
+			.box
+				ul.soptTabs
+					each group, key in spotData
+						li(class= key === 0 ? `active` : null)
+							a(href='#', id= `trigger_${group.id}`)
+								if (key === 4)
+									+handleSpan(group.name, true)
+								else
+									+handleBR(group.name, true)
+				.boxBody
+					each group, key in spotData
+						div(class= key === 0 ? `spotGroup active` : `spotGroup`, id= `box_${group.id}`)
+							a.title(data-toggle="collapse", href=`#collapse_${group.id}`)
+								h4
+									if (key === 4)
+										+handleSpan(group.name, true)
+									else
+										+handleBR(group.name)
+							.collapseBody(id= `collapse_${group.id}`)
+								each child in group.children
+									h5= child.name
+									div
+										each spot in child.spots
+											div
+												div
+													h6= spot
+			
+block script
+	script.
+		var bPoint = 992;
+		$( document ).ready(function() {
+			setCollapse();
+
+		}).on("tap click", '[id^="trigger_"]', function( event, data ){
+			var id = $(this).attr('id').replace('trigger_', '');
+			$('[id^="trigger_"]').parent('li').removeClass('active');
+			$(this).parent('li').addClass('active');
+			$('[id^="box_"]').removeClass('active');
+			$('[id^="box_' + id + '"]').addClass('active');
+		});
+		
+		function setCollapse(){
+			
+			if ( $(window).width() < bPoint ) {
+				$('.collapseBody').addClass('collapse');
+				$('.spotGroup .title').addClass('collapsed');
+			}else {
+				$('.collapseBody').removeClass('collapse show');
+				$('.spotGroup .title').removeClass('collapsed');
+			}
+
+			if ( $(window).width() < 1520 ) {
+				
+				var containerWidth = $('.spotContainer').outerWidth();
+				var gap = ($(window).width() - containerWidth) / 2;
+				
+				if (gap < 280) {
+					var left = -(280 - gap) + 'px';
+					$('.bgContent.spots .bursh_01').css({'left': left})
+				}
+			}else{
+				$('.bgContent.spots .bursh_01').css({left: 0})
+			}
+		}
+
+		$(window).resize(function(){
+			setCollapse()
+		})
+
+		

@@ -1,0 +1,39 @@
+extends ./layouts/master.pug
+block urlVariable
+	-
+		var url = './'
+		var activeMenu = 1
+
+block content
+	include ./layouts/components/_variable.pug
+	mixin mutiListaInput(data, isActive)
+		each item, key in data
+			div
+				div
+					a.item(href= url + `article_${key+1}.html`)
+						.img
+						.text
+							.title
+								div= item.div_1 
+								div= item.div_2 
+							p
+								span= item.p
+							.button 閱讀更多
+	.listaBody
+		.listaContainer
+			h1 投資甜蜜點
+			.listaFlex
+				+mutiListaInput(listaData, 1)
+
+block script
+	script(src= url + 'assets/plugins/slick/slick.min.js')
+	script(src= url + 'assets/js/handleMarketTitle.js')
+	script(src= url + 'assets/plugins/jquery.dotdotdot.js')
+	script.
+		$(document).ready(function(){
+			var newsDotdotdot = $(".listaFlex > div .item .text p span").dotdotdot({
+				truncate: 'letter',
+				watch: "window",
+			}).data( "dotdotdot" );
+		})
+		
