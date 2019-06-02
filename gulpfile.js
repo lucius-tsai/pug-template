@@ -34,6 +34,13 @@ var cssnano = require('gulp-cssnano');
 
 //js
 var uglify = require('gulp-uglify');
+var babel = require('gulp-babel');
+var browserify = require('gulp-browserify');
+var babelify = require('babelify');
+var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
+
+// import source from 'vinyl-source-stream'
 
 var env = util.env.env || 'development';
 
@@ -55,21 +62,37 @@ var PATHS = {
   CSS_DIST:   DIST,
   CSS_WATCH:  './src/**/*.css',
 
-  IMGS_SRC:   './src/**/*.{png,gif,jpg,svg,jpeg}',
+
+  IMGS_SRC:   './src/**/*.{png,jpg,svg,jpeg}',
   IMGS_DIST:  DIST,
-  IMGS_WATCH: './src/**/*.{png,gif,jpg,svg,jpeg}',
+  IMGS_WATCH: './src/**/*.{png,jpg,svg,jpeg}',
+
+  // IMGS_SRC:   ['./src/**/*.{png,gif,jpg,svg,jpeg}', '!./src/pdf/imgs/*.*'],
+  // IMGS_DIST:  DIST,
+  // IMGS_WATCH: ['./src/**/*.{png,gif,jpg,svg,jpeg}', '!./src/pdf/imgs/*.*'],
+
 
   PNGS_SRC:   './src/**/*.png',
   PNGS_DIST:  DIST,
   PNGS_WATCH: './src/**/*.png',
 
-  JS_SRC:     './src/**/*.js',
+  JS_SRC:     ['./src/**/*.js', '!./src/**/*.babel.js'],
   JS_DIST:    DIST,
-  JS_WATCH:   './src/**/*.js',
+  JS_WATCH:   ['./src/**/*.js', '!./src/**/*.babel.js'],
 
-  CP_SRC:     ['./src/**/*.*', '!./src/**/*.{pug,scss,css,png,gif,jpg,svg,jpeg,js}'],
+  JS_BABEL_SRC:     './src/**/*.babel.js',
+  JS_BABEL_DIST:    DIST,
+  JS_BABEL_WATCH:   './src/**/*.babel.js',
+
+
+  CP_SRC:     ['./src/**/*.*', '!./src/**/*.{pug,scss,css,png,jpg,svg,jpeg,js}'],
   CP_DIST:    DIST,
-  CP_WATCH:   ['./src/**/*.*', '!./src/**/*.{pug,scss,css,png,gif,jpg,svg,jpeg,js}']
+  CP_WATCH:   ['./src/**/*.*', '!./src/**/*.{pug,scss,css,png,jpg,svg,jpeg,js}'],
+
+  // CP_SRC:     ['./src/**/*.*', '!./src/**/*.{pug,scss,css,png,gif,jpg,svg,jpeg,js}', './src/pdf/imgs/*.*'],
+  // CP_DIST:    DIST,
+  // CP_WATCH:   ['./src/**/*.*', '!./src/**/*.{pug,scss,css,png,gif,jpg,svg,jpeg,js}', './src/pdf/imgs/*.*']
+
 
 }
 
@@ -206,8 +229,39 @@ function compilePug() {
 function compileJS() {
   return gulp
     .src(PATHS.JS_SRC)
+    .pipe(sourcemaps.init())
     .pipe(runOpts.js.uglify ? uglify() : util.noop())
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest(PATHS.JS_DIST))
+    .pipe(browsersync.stream());
+}
+
+function compileBabelJS() {
+  return gulp
+    .src(PATHS.JS_BABEL_SRC)
+    .pipe(sourcemaps.init({loadMaps: true}))
+    .pipe(
+      browserify({
+        // insertGlobals : false,
+        debug : runOpts.js.uglify,
+        transform: [babelify.configure({
+          presets: ['@babel/env']
+        })]
+      })
+    )
+    // .pipe(source(PATHS.JS_BABEL_SRC))
+    // .pipe(buffer())
+    
+    // .pipe(babel({
+    //   presets: ['@babel/env'],
+    //   compact: false,
+    // }))
+    .pipe(runOpts.js.uglify ? uglify() : util.noop())
+    .pipe(sourcemaps.write())
+    .pipe(rename(function(path){
+      path.basename = path.basename.replace('.babel', '')
+    }))
+    .pipe(gulp.dest(PATHS.JS_BABEL_DIST))
     .pipe(browsersync.stream());
 }
 
@@ -249,13 +303,14 @@ function watchFiles() {
   gulp.watch( PATHS.SASS_WATCH, gulp.series(compileSass));
   gulp.watch( PATHS.CSS_WATCH, gulp.series(compileCss));
   gulp.watch( PATHS.JS_WATCH, gulp.series(compileJS));
+  gulp.watch( PATHS.JS_BABEL_WATCH, gulp.series(compileBabelJS));
   gulp.watch( PATHS.IMGS_WATCH, gulp.series(compileImages));
   gulp.watch( PATHS.CP_WATCH, gulp.series(cpFiles));
 }
 
-const buildProject = gulp.series(clean, compileSass, compileCss, compilePug, compileJS, compileImages, cpFiles);
+const buildProject = gulp.series(clean, compileSass, compileCss, compilePug, compileJS, compileBabelJS, compileImages, cpFiles);
 
-const beforeWatch = gulp.series(compileSass, compileCss, compilePug, compileJS, compileImages, cpFiles);
+const beforeWatch = gulp.series(compileSass, compileCss, compilePug, compileJS, compileBabelJS, compileImages, cpFiles);
 
 const watch = gulp.series(beforeWatch ,gulp.parallel(watchFiles, browserSync));
 
@@ -265,3 +320,5 @@ exports.build = buildProject;
 exports.sass = compileSass;
 exports.img = compileImages;
 exports.files = cpFiles;
+
+exports.es6 = compileBabelJS;
