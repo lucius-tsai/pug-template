@@ -62,9 +62,15 @@ var PATHS = {
   CSS_DIST:   DIST,
   CSS_WATCH:  './src/**/*.css',
 
+
   IMGS_SRC:   './src/**/*.{png,jpg,svg,jpeg}',
   IMGS_DIST:  DIST,
   IMGS_WATCH: './src/**/*.{png,jpg,svg,jpeg}',
+
+  // IMGS_SRC:   ['./src/**/*.{png,gif,jpg,svg,jpeg}', '!./src/pdf/imgs/*.*'],
+  // IMGS_DIST:  DIST,
+  // IMGS_WATCH: ['./src/**/*.{png,gif,jpg,svg,jpeg}', '!./src/pdf/imgs/*.*'],
+
 
   PNGS_SRC:   './src/**/*.png',
   PNGS_DIST:  DIST,
@@ -78,9 +84,15 @@ var PATHS = {
   JS_BABEL_DIST:    DIST,
   JS_BABEL_WATCH:   './src/**/*.babel.js',
 
+
   CP_SRC:     ['./src/**/*.*', '!./src/**/*.{pug,scss,css,png,jpg,svg,jpeg,js}'],
   CP_DIST:    DIST,
   CP_WATCH:   ['./src/**/*.*', '!./src/**/*.{pug,scss,css,png,jpg,svg,jpeg,js}'],
+
+  // CP_SRC:     ['./src/**/*.*', '!./src/**/*.{pug,scss,css,png,gif,jpg,svg,jpeg,js}', './src/pdf/imgs/*.*'],
+  // CP_DIST:    DIST,
+  // CP_WATCH:   ['./src/**/*.*', '!./src/**/*.{pug,scss,css,png,gif,jpg,svg,jpeg,js}', './src/pdf/imgs/*.*']
+
 
 }
 
@@ -262,7 +274,9 @@ function compileSass () {
       browsers: ['last 2 versions'],
       cascade: false
     }))
-    .pipe(runOpts.css.cssnano ? cssnano() : util.noop())
+    .pipe(runOpts.css.cssnano ? cssnano({
+      reduceIdents: false
+    }) : util.noop())
     .pipe(sourcemaps.write('.'))
     .pipe(rename(function(path){
       path.dirname = path.dirname.replace('scss', 'css')
