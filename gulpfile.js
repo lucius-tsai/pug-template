@@ -231,7 +231,7 @@ function compileJS() {
     .src(PATHS.JS_SRC)
     .pipe(sourcemaps.init())
     .pipe(runOpts.js.uglify ? uglify() : util.noop())
-    .pipe(sourcemaps.write())
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(PATHS.JS_DIST))
     .pipe(browsersync.stream());
 }
@@ -257,7 +257,7 @@ function compileBabelJS() {
     //   compact: false,
     // }))
     .pipe(runOpts.js.uglify ? uglify() : util.noop())
-    .pipe(sourcemaps.write())
+    .pipe(sourcemaps.write('.'))
     .pipe(rename(function(path){
       path.basename = path.basename.replace('.babel', '')
     }))
