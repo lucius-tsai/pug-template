@@ -1,6 +1,5 @@
 // https://medium.com/@dzhurovivan/es6-development-environment-made-easy-with-babel-gulp-and-webpack-a4017bd96c30
 
-
 var gulp = require('gulp');
 
 //utility
@@ -40,7 +39,7 @@ var buffer = require('vinyl-buffer');
 // import source from 'vinyl-source-stream'
 
 var env = util.env.env || 'development';
-
+console.log(util)
 console.log('===== using '+ env + ' mode =====');
 
 var DIST = './build';
@@ -85,9 +84,9 @@ var PATHS = {
   WP_DIST:    DIST,
   WP_WATCH:   './src/assets/js/**/*.js',
 
-  CP_SRC:     ['./src/**/*.*', '!./src/**/*.{pug,scss,css,png,jpg,svg,jpeg,js}'],
+  CP_SRC:     ['./src/**/*.*', '!./src/**/*.{pug,scss,css,png,jpg,svg,jpeg}', '!./src/assets/js/**/*.*'],
   CP_DIST:    DIST,
-  CP_WATCH:   ['./src/**/*.*', '!./src/**/*.{pug,scss,css,png,jpg,svg,jpeg,js}'],
+  CP_WATCH:   ['./src/**/*.*', '!./src/**/*.{pug,scss,css,png,jpg,svg,jpeg,js}', '!./src/assets/js/**/*.*'],
 
   // CP_SRC:     ['./src/**/*.*', '!./src/**/*.{pug,scss,css,png,gif,jpg,svg,jpeg,js}', './src/pdf/imgs/*.*'],
   // CP_DIST:    DIST,
@@ -267,9 +266,12 @@ function compileBabelJS() {
 
 function webpackTask() {
   return gulp
-    .src(PATHS.WP_SRC)
-    .pipe(webpack(require('./webpack.config.js')))
-    .pipe(gulp.dest('./build/assets/js'));
+    .src(DIST)
+    .pipe(webpack( env==='development' ? require('./webpack.dev.js') : require('./webpack.prod.js') , require("webpack")))
+    .pipe(gulp.dest(DIST+ '/assets/js'))
+    .pipe(browsersync.stream());
+    
+    // .pipe(gulp.dest('./build/assets/js'));
 }
 
 function compileSass () {
@@ -312,10 +314,10 @@ function watchFiles() {
   gulp.watch( PATHS.SASS_WATCH, gulp.series(compileSass));
   gulp.watch( PATHS.CSS_WATCH, gulp.series(compileCss));
   // gulp.watch( PATHS.JS_WATCH, gulp.series(compileJS));
-  gulp.watch( PATHS.JS_WATCH, gulp.series(webpackTask));
-  gulp.watch( PATHS.JS_WATCH, gulp.series(compileJS));
+  // gulp.watch( PATHS.JS_WATCH, gulp.series(compileJS));
   gulp.watch( PATHS.IMGS_WATCH, gulp.series(compileImages));
   gulp.watch( PATHS.CP_WATCH, gulp.series(cpFiles));
+  gulp.watch( PATHS.JS_WATCH, gulp.series(webpackTask));
 }
 
 const buildProject = gulp.series(
@@ -324,7 +326,17 @@ const buildProject = gulp.series(
   compileImages, cpFiles, webpackTask
 );
 
-const beforeWatch = gulp.series(compileSass, compileCss, compilePug, compileJS, compileBabelJS, compileImages, cpFiles, webpackTask);
+const beforeWatch = gulp.series(
+  clean,
+  compileSass,
+  compileCss,
+  compilePug,
+  // compileJS,
+  // compileBabelJS,
+  compileImages,
+  cpFiles,
+  webpackTask
+);
 
 const watch = gulp.series(beforeWatch ,gulp.parallel(watchFiles, browserSync));
 

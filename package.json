@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "gulp watch --env=development",
-    "build": "gulp build --env=production"
+    "start": "gulp watch --env=development --mode=development",
+    "build": "gulp build --env=production --mode=production",
+    "analyse": "webpack --config webpack.analyes.js"
   },
   "keywords": [],
   "author": "",
@@ -53,11 +54,15 @@
   },
   "dependencies": {
     "@antv/data-set": "^0.10.2",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "g2": "^2.3.13",
     "lodash": "^4.17.11",
     "validate.js": "^0.12.0",
-    "viser-vue": "^2.4.6"
+    "viser-vue": "^2.4.6",
+    "webpack-bundle-analyzer": "^3.4.1",
+    "webpack-cli": "^3.3.7",
+    "webpack-merge": "^4.2.2"
   }
 }
