@@ -12,6 +12,7 @@ var del = require('del');
 var rename = require("gulp-rename");
 var browsersync = require("browser-sync").create();
 var util = require('gulp-util');
+let webpack = require('webpack-stream');
 
 //html
 var pug = require('gulp-pug');
@@ -84,6 +85,9 @@ var PATHS = {
   JS_BABEL_DIST:    DIST,
   JS_BABEL_WATCH:   './src/**/*.babel.js',
 
+  WP_SRC:     './src/assets/js/**/*.js',
+  WP_DIST:    DIST,
+  WP_WATCH:   './src/assets/js/**/*.js',
 
   CP_SRC:     ['./src/**/*.*', '!./src/**/*.{pug,scss,css,png,jpg,svg,jpeg,js}'],
   CP_DIST:    DIST,
@@ -265,6 +269,13 @@ function compileBabelJS() {
     .pipe(browsersync.stream());
 }
 
+function webpackTask() {
+  return gulp
+    .src(PATHS.WP_SRC)
+    .pipe(webpack(require('./webpack.config.js')))
+    .pipe(gulp.dest('./build/assets/js'));
+}
+
 function compileSass () {
   return gulp
     .src(PATHS.SASS_SRC)
@@ -304,15 +315,20 @@ function watchFiles() {
   gulp.watch( PATHS.PUG_WATCH, gulp.series(compilePug));
   gulp.watch( PATHS.SASS_WATCH, gulp.series(compileSass));
   gulp.watch( PATHS.CSS_WATCH, gulp.series(compileCss));
+  // gulp.watch( PATHS.JS_WATCH, gulp.series(compileJS));
+  gulp.watch( PATHS.JS_WATCH, gulp.series(webpackTask));
   gulp.watch( PATHS.JS_WATCH, gulp.series(compileJS));
-  gulp.watch( PATHS.JS_BABEL_WATCH, gulp.series(compileBabelJS));
   gulp.watch( PATHS.IMGS_WATCH, gulp.series(compileImages));
   gulp.watch( PATHS.CP_WATCH, gulp.series(cpFiles));
 }
 
-const buildProject = gulp.series(clean, compileSass, compileCss, compilePug, compileJS, compileBabelJS, compileImages, cpFiles);
+const buildProject = gulp.series(
+  clean, compileSass, compileCss, compilePug,
+  // compileJS, compileBabelJS,
+  compileImages, cpFiles, webpackTask
+);
 
-const beforeWatch = gulp.series(compileSass, compileCss, compilePug, compileJS, compileBabelJS, compileImages, cpFiles);
+const beforeWatch = gulp.series(compileSass, compileCss, compilePug, compileJS, compileBabelJS, compileImages, cpFiles, webpackTask);
 
 const watch = gulp.series(beforeWatch ,gulp.parallel(watchFiles, browserSync));
 
