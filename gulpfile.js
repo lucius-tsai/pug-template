@@ -1,9 +1,5 @@
+// https://medium.com/@dzhurovivan/es6-development-environment-made-easy-with-babel-gulp-and-webpack-a4017bd96c30
 
-// 要思考一下，watch跟build時是否要重新編譯
-// 目前 build 會先 clean，watch 不會 clean
-// 影響到的地方是 watch 時新增的圖檔不會壓縮 (先關掉開發判斷解決)
-
-// https://gist.github.com/LoyEgor/e9dba0725b3ddbb8d1a68c91ca5452b5
 
 var gulp = require('gulp');
 
