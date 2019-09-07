@@ -1,0 +1,5 @@
+each val, idx in Paths
+	h2= idx
+		ul
+			each user, name in val
+				li= `${name}:${user}`

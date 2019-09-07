@@ -45,6 +45,12 @@ const jsx = {
 }
 
 const config = {
+  node: {
+    // console: 'empty',
+    fs: 'empty',
+    // net: 'empty',
+    // tls: 'empty'
+  },
   entry: {
     app: path.resolve(__dirname, 'src/assets/js/app.js')
   },
@@ -92,7 +98,7 @@ const config = {
   module: {
     rules: [ imgs, fonts, pug, scss, jsx, files ]
   },
-  plugins: []
+  plugins: [],
 };
 
 module.exports = config;
