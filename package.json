@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "gulp watch --env=development --mode=development",
-    "build": "gulp build --env=production --mode=production",
+    "start": "gulp watch --env=development --mode=development --config=dev",
+    "build": "gulp build --env=production --mode=production --config=prod",
+    "build:uat": "gulp build --env=production --mode=production --config=uat",
     "analyse": "webpack --config webpack.analyes.js"
   },
   "keywords": [],

@@ -39,8 +39,10 @@ var buffer = require('vinyl-buffer');
 // import source from 'vinyl-source-stream'
 
 var env = util.env.env || 'development';
+var config = util.env.config || 'dev';
 console.log(util)
 console.log('===== using '+ env + ' mode =====');
+console.log('===== using '+ config + ' config =====');
 
 var DIST = './build';
 
@@ -219,7 +221,8 @@ function compilePug() {
   return gulp
     .src(PATHS.PUG_SRC)
     .pipe(pug({
-      pretty: true
+      pretty: true,
+      data: {env: config}
     }))
     .pipe(gulp.dest(PATHS.PUG_DIST))
     .pipe(browsersync.stream());
@@ -267,7 +270,7 @@ function compileBabelJS() {
 function webpackTask() {
   return gulp
     .src(DIST)
-    .pipe(webpack( env==='development' ? require('./webpack.dev.js') : require('./webpack.prod.js') , require("webpack")))
+    .pipe(webpack( require('./webpack.' + config + '.js') , require("webpack")))
     .pipe(gulp.dest(DIST+ '/assets/js'))
     .pipe(browsersync.stream());
     
