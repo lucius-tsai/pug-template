@@ -8,6 +8,7 @@ var rename = require("gulp-rename");
 var browsersync = require("browser-sync").create();
 var util = require('gulp-util');
 let webpack = require('webpack-stream');
+var touch = require('gulp-touch-cmd');
 
 //html
 var pug = require('gulp-pug');
@@ -43,6 +44,8 @@ var config = util.env.config || 'dev';
 console.log(util)
 console.log('===== using '+ env + ' mode =====');
 console.log('===== using '+ config + ' config =====');
+
+
 
 var DIST = './build';
 
@@ -212,7 +215,8 @@ function compileImages() {
       // :
       // util.noop()
     )
-    .pipe(gulp.dest(PATHS.IMGS_DIST));
+    .pipe(gulp.dest(PATHS.IMGS_DIST))
+    .pipe( touch() )
 }
 
 
@@ -225,6 +229,7 @@ function compilePug() {
       data: {env: config}
     }))
     .pipe(gulp.dest(PATHS.PUG_DIST))
+    .pipe( touch() )
     .pipe(browsersync.stream());
 }
 
@@ -251,13 +256,6 @@ function compileBabelJS() {
         })]
       })
     )
-    // .pipe(source(PATHS.JS_BABEL_SRC))
-    // .pipe(buffer())
-    
-    // .pipe(babel({
-    //   presets: ['@babel/env'],
-    //   compact: false,
-    // }))
     .pipe(runOpts.js.uglify ? uglify() : util.noop())
     .pipe(sourcemaps.write('.'))
     .pipe(rename(function(path){
@@ -295,6 +293,7 @@ function compileSass () {
       path.dirname = path.dirname.replace('sass', 'css')
     }))
     .pipe(gulp.dest(PATHS.SASS_DIST))
+    .pipe( touch() )
     .pipe(browsersync.stream());
 }
 
@@ -324,13 +323,14 @@ function watchFiles() {
 }
 
 const buildProject = gulp.series(
-  clean, compileSass, compileCss, compilePug,
+  clean,
+  compileSass, compileCss, compilePug,
   // compileJS, compileBabelJS,
   compileImages, cpFiles, webpackTask
 );
 
 const beforeWatch = gulp.series(
-  clean,
+  // clean,
   compileSass,
   compileCss,
   compilePug,
