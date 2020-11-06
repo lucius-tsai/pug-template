@@ -1,0 +1,167 @@
+/* What it does: Hover styles for buttons */
+.button-td,
+.button-a {
+  transition: all 100ms ease-in;
+}
+
+.button-td-primary:hover,
+.button-a-primary:hover {
+  background: #3737d4 !important;
+  border-color: #9b9bef !important;
+}
+
+/* Media Queries */
+@media screen and (max-width: 480px) {
+  /* What it does: Forces table cells into full-width rows. */
+  .stack-column,
+  .stack-column-center {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    direction: ltr !important;
+  }
+
+  /* And center justify these ones. */
+  .stack-column-center {
+    text-align: center !important;
+  }
+
+  /* What it does: Generic utility class for centering. Useful for images, buttons, and nested tables. */
+  .center-on-narrow {
+    text-align: center !important;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    float: none !important;
+  }
+
+  table.center-on-narrow {
+    display: inline-block !important;
+  }
+  .center-on-narrow.paddingTD {
+    padding: 40px 25px !important;
+  }
+  /* What it does: Adjust typography on small screens to improve readability */
+  .email-container p {
+    font-size: 17px !important;
+  }
+  .email-container p.small {
+    font-size: 14px !important;
+    line-height: 1.7em;
+  }
+}
+
+.dark-img {
+  display: none;
+  display: none !important;
+}
+.bodyBG {
+  background-color: #F4F9FF !important;
+}
+
+.EmailBody {
+  background: #fff;
+}
+
+html, body {
+  background-color: #F4F9FF !important;
+}
+
+$src: './assets/imgs/';
+
+@if $env == 'dev' {
+  $src: '../assets/imgs';
+} @else {
+  $src: 'https://asset.kvbgc.com/assets/img/gcfx_email_template/20201027';
+}
+
+.bodyBackground {
+  background-image: url(#{$src}/background.png);
+}
+.qrBackground {
+  background: #FFFFFE !important;
+}
+
+// table.buttonContainer {
+//   margin-left: 0;
+// }
+
+
+@mixin darkMode {
+  /* Shows Dark Mode-Only Content, Like Images */
+  .dark-img {
+    display: block !important;
+    width: auto !important;
+    overflow: visible !important;
+    float: none !important;
+    max-height: inherit !important;
+    max-width: inherit !important;
+    line-height: auto !important;
+    margin-top: 0px !important;
+    visibility: inherit !important;
+  }
+  .qrBackground {
+    background: #FFF !important;
+    border-color: #aaa !important;
+    img {
+      filter: contrast(0) !important;
+    }
+  }
+  .EmailBody {
+    background: #333 !important;
+  }
+  html, body {
+    background-color: #272623!important
+  }
+
+  .bodyBackground {
+    background-image: url(#{$src}/background_dark.png);
+  }
+
+  /* Hides Light Mode-Only Content, Like Images */
+  .light-img {
+    display: none;
+    display: none !important;
+  }
+
+  /* Custom Dark Mode Background Color */
+  .bodyBG {
+    background-color: #272623 !important;
+  }
+
+  /* Custom Dark Mode Font Colors */
+  h1,
+  h2,
+  p,
+  span,
+  b {
+    color: #aaa !important;
+  }
+
+  h4 {
+    color: #FFF !important;
+  }
+
+  a {
+    color: #91add4 !important;
+  }
+
+  .button-td, .button-a {
+    color: #FFF !important;
+  }
+
+  /* Custom Dark Mode Text Link Color */
+  .link {
+    color: #91add4 !important;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  @include darkMode;
+}
+
+[data-ogsc] {
+  @include darkMode;
+}
+
+

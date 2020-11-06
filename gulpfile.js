@@ -28,6 +28,7 @@ sass.compiler = require("node-sass");
 var sourcemaps = require("gulp-sourcemaps");
 var autoprefixer = require("gulp-autoprefixer");
 var cssnano = require("gulp-cssnano");
+var sassVariables = require('gulp-sass-variables')
 
 //js
 var uglify = require("gulp-uglify");
@@ -57,7 +58,7 @@ var PATHS = {
     "!./src/assets/**/*.*",
   ],
   PUG_DIST: DIST,
-  PUG_WATCH: ["./src/**/*.pug", "!./src/assets/**/*.*"],
+  PUG_WATCH: ["./src/**/*.pug", "./build/src_mail/*.css", "!./src/assets/**/*.*"],
 
   SASS_SRC: [
     "./src/**/*.scss",
@@ -162,6 +163,7 @@ function browserSync(done) {
   browsersync.init({
     server: {
       baseDir: DIST,
+      directory: true,
     },
     port: 3000,
   });
@@ -296,6 +298,9 @@ function webpackTask() {
 function compileSass() {
   return gulp
     .src(PATHS.SASS_SRC)
+    .pipe(sassVariables({
+      $env: config
+    }))
     .pipe(sourcemaps.init())
     .pipe(sass().on("error", sass.logError))
     .pipe(
