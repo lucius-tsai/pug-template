@@ -1,9 +1,12 @@
 doctype html
+include ../_variable.pug
 block urlVariable
   - var url = './'
-- var imgUrl = url + 'assets/imgs/'
-//- - var imgUrl = 'http://www.iwrr.tw/test_imgs/'
-- var font = '"Microsoft JhengHei", "微軟正黑體", sans-serif'
+- var assets = url + 'assets/'
+- var imgUrl = env === 'dev' ? (url + 'assets/imgs') : ('https://asset.kvbgc.com/assets/img/gcfx_email_template/20201027')
+
+- var font = '"Open Sans", "Microsoft JhengHei", "微軟正黑體", sans-serif'
+
 mixin Bulletproof(version = 'mso')
   != `<!--[if ${version}]>`
   block
@@ -21,14 +24,17 @@ html(lang='zh-Hant-TW' xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas
     //  Disable auto-scale in iOS 10 Mail entirely 
     meta(name='format-detection' content='telephone=no,address=no,email=no,date=no,url=no')
     //  Tell iOS not to automatically link certain text strings. 
+    meta(name='color-scheme' content='light dark')
+    meta(name='supported-color-schemes' content='light dark')
     title
+      = `!! Hidden Preheader Text !!`
     //  The title tag shows in email notifications, like Android 4.4. 
     //  Web Font / @font-face : BEGIN 
     //  NOTE: If web fonts are not required, lines 10 - 27 can be safely removed. 
     //  Desktop Outlook chokes on web font references and defaults to Times New Roman, so we force a safe fallback font. 
     +Bulletproof
       != `<style>`
-      != `* { font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif !important; }`
+      != `* { font-family: ${font} !important; }`
       != `</style>`
 
     //  All other clients get the webfont reference; some will render the font and others will silently fail to the fallbacks. More on that here: http://stylecampaign.com/blog/2015/02/webfont-support-in-email/ 
@@ -37,114 +43,9 @@ html(lang='zh-Hant-TW' xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas
     // <![endif]
     //  Web Font / @font-face : END 
     //  CSS Reset : BEGIN 
-    style.
+    style
       
-      /* What it does: Remove spaces around the email design added by some email clients. */
-          /* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
-          html,
-          body {
-            margin: 0 auto !important;
-            padding: 0 !important;
-            height: 100% !important;
-            width: 100% !important;
-          }
-      
-          /* What it does: Stops email clients resizing small text. */
-          * {
-            -ms-text-size-adjust: 100%;
-            -webkit-text-size-adjust: 100%;
-          }
-      
-          /* What it does: Centers email on Android 4.4 */
-          div[style*="margin: 16px 0"] {
-            margin: 0 !important;
-          }
-      
-          /* What it does: forces Samsung Android mail clients to use the entire viewport */
-          #MessageViewBody,
-          #MessageWebViewDiv {
-            width: 100% !important;
-          }
-      
-          /* What it does: Stops Outlook from adding extra spacing to tables. */
-          table,
-          td {
-            mso-table-lspace: 0pt !important;
-            mso-table-rspace: 0pt !important;
-          }
-      
-          /* What it does: Fixes webkit padding issue. */
-          table {
-            border-spacing: 0 !important;
-            border-collapse: collapse !important;
-            table-layout: fixed !important;
-            margin: 0 auto !important;
-          }
-      
-          /* What it does: Uses a better rendering method when resizing images in IE. */
-          img {
-            -ms-interpolation-mode: bicubic;
-          }
-      
-          /* What it does: Prevents Windows 10 Mail from underlining links despite inline CSS. Styles for underlined links should be inline. */
-          a {
-            text-decoration: none;
-          }
-      
-          /* What it does: A work-around for email clients meddling in triggered links. */
-          a[x-apple-data-detectors],
-          /* iOS */
-          .unstyle-auto-detected-links a,
-          .aBn {
-            border-bottom: 0 !important;
-            cursor: default !important;
-            color: inherit !important;
-            text-decoration: none !important;
-            font-size: inherit !important;
-            font-family: inherit !important;
-            font-weight: inherit !important;
-            line-height: inherit !important;
-          }
-      
-          /* What it does: Prevents Gmail from changing the text color in conversation threads. */
-          .im {
-            color: inherit !important;
-          }
-      
-          /* What it does: Prevents Gmail from displaying a download button on large, non-linked images. */
-          .a6S {
-            display: none !important;
-            opacity: 0.01 !important;
-          }
-      
-          /* If the above doesn't work, add a .g-img class to any image in question. */
-          img.g-img+div {
-            display: none !important;
-          }
-      
-          /* What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  */
-          /* Create one of these media queries for each additional viewport size you'd like to fix */
-      
-          /* iPhone 4, 4S, 5, 5S, 5C, and 5SE */
-          @media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
-            u~div .email-container {
-              min-width: 320px !important;
-            }
-          }
-      
-          /* iPhone 6, 6S, 7, 8, and X */
-          @media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
-            u~div .email-container {
-              min-width: 375px !important;
-            }
-          }
-      
-          /* iPhone 6+, 7+, and 8+ */
-          @media only screen and (min-device-width: 414px) {
-            u~div .email-container {
-              min-width: 414px !important;
-            }
-          }
+      include ../../../build/src_mail/mail_base.css
       
     //  What it does: Makes background images in 72ppi Outlook render at correct size. 
     +Bulletproof('gte mso 9')
@@ -155,74 +56,27 @@ html(lang='zh-Hant-TW' xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas
               <o:PixelsPerInch>96</o:PixelsPerInch>
           </o:OfficeDocumentSettings>
         </xml>
-    
     //  CSS Reset : END 
+
     //  Progressive Enhancements : BEGIN 
-    style.
-      
-      /* What it does: Hover styles for buttons */
-          .button-td,
-          .button-a {
-            transition: all 100ms ease-in;
-          }
-      
-          .button-td-primary:hover,
-          .button-a-primary:hover {
-            background: #555555 !important;
-            border-color: #555555 !important;
-          }
-      
-          /* Media Queries */
-          @media screen and (max-width: 480px) {
-      
-            /* What it does: Forces table cells into full-width rows. */
-            .stack-column,
-            .stack-column-center {
-              display: block !important;
-              width: 100% !important;
-              max-width: 100% !important;
-              direction: ltr !important;
-            }
-      
-            /* And center justify these ones. */
-            .stack-column-center {
-              text-align: center !important;
-            }
-      
-            /* What it does: Generic utility class for centering. Useful for images, buttons, and nested tables. */
-            .center-on-narrow {
-              text-align: center !important;
-              display: block !important;
-              margin-left: auto !important;
-              margin-right: auto !important;
-              float: none !important;
-            }
-      
-            table.center-on-narrow {
-              display: inline-block !important;
-            }
-      
-            /* What it does: Adjust typography on small screens to improve readability */
-            .email-container p {
-              font-size: 17px !important;
-            }
-          }
-      
+    style
+      include ../../../build/src_mail/mail_enhance.css
     //  Progressive Enhancements : END 
-  body
-    center(style='max-width: 100%; background-color: #FFF; margin: auto')
+
+  body.bodyBG(style='background-color: #F4F9FF;')
+    center(style='max-width: 100%; margin: auto')
       +Bulletproof('mso | IE')
-        !=`<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="600" style="background-color: #222222;">`
+        !=`<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#F4F9FF">`
         !=`<tr>`
         !=`<td>`
 
       //-  Visually Hidden Preheader Text : BEGIN 
-      div(style='display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;').  
-        !! Hidden Preheader Text !!
+      div(style=`display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: ${font};`)
+        = `!! Hidden Preheader Text !!`
 
       //-  Create white space after the desired preview text so email clients don’t pull other distracting text into the inbox preview. Extend as necessary. 
       //-  Preview Text Spacing Hack : BEGIN 
-      div(style='display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;').
+      div(style=`display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: ${font};`).
 
       //-
       //- Set the email width. Defined in two places:
@@ -233,14 +87,14 @@ html(lang='zh-Hant-TW' xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas
 
           
       //  Full Bleed Background Section : BEGIN 
-      table(role='presentation' cellspacing='0' cellpadding='0' border='0' width='100%' style='background-color: #F1F1F1;')
+      table(role='presentation' cellspacing='0' cellpadding='0' border='0' width='100%')
         tbody
           tr
             td
-              .email-container(style='max-width: 680px; margin: 0 auto;')
-                .inside-container(style='max-width: 600px; margin: 0 auto; box-sizing: border-box; padding: 0 15px')
+              .email-container(style='max-width: 680px; margin: 0 auto; padding: 0 15px; box-sizing: border-box;')
+                .inside-container(style='max-width: 650px; margin: 0 auto; box-sizing: border-box')
                   +Bulletproof('mso')
-                    !=`<table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="680">`
+                    !=`<table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="650">`
                     !=`<tr>`
                     !=`<td>`
                   
@@ -249,53 +103,74 @@ html(lang='zh-Hant-TW' xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas
                     tbody
                       //  Email Header : BEGIN 
                       tr
-                        td(style='padding: 20px 0')
+                        td(style='padding: 32px 0 22px 0' width='100%')
                           table(role='presentation' cellspacing='0' cellpadding='0' border='0' width='100%' style='margin: auto;')
                             tbody
                               tr
                                 td
-                                  img(
-                                    src= assets + 'imgs/uni_logo.png'
-                                    width='80'
-                                    height='25'
-                                    alt='alt_text'
-                                    border='0'
-                                    style='height: auto; font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif; font-size: 15px; line-height: 15px; color: #555555;'
-                                  )
-                                td
-                                  img(
-                                    src= assets + 'imgs/uni_logo.png'
-                                    width='80'
-                                    height='25'
-                                    alt='alt_text'
-                                    border='0'
-                                    style='height: auto; font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif; font-size: 15px; line-height: 15px; color: #555555;'
-                                  )
-                      
+                                  //  start HEADER_LOGO 
+                                  a(href= `https://gcfxweb.kvbgc.com/${locale}` target='_blank')
+                                    img.light-img(
+                                      src= imgUrl + '/logo_gcfx_color.png'
+                                      width='250'
+                                      alt='GCFX LOGO'
+                                      style='color: #33373E; font-family:\'proxima_nova\', Helvetica, Arial, sans-serif; font-weight:bold; font-size:36px; line-height:40px; text-decoration: none; margin: 0 auto; padding: 0;' border='0'
+                                    )
+                                    //
+                                      The following Dark Mode logo image is hidden 
+                                          with MSO conditional code and inline CSS, but will be         
+                                          revealed once Dark Mode is triggered 
+                                    // [if !mso]><! 
+                                    .dark-img(
+                                      style='display:none; overflow:hidden; float:left; width:0px; max-height:0px; max-width:0px; line-height:0px; visibility:hidden;'
+                                    )
+                                      img(
+                                        src= imgUrl + '/logo_gcfx_w.png'
+                                        width='250'
+                                        alt='Litmus'
+                                        style='color: #ffffff; font-family:\'proxima_nova\', Helvetica, Arial, sans-serif; font-weight:bold; font-size:36px; line-height:40px; text-decoration: none; margin: 0 auto; padding: 0;' border='0'
+                                      )
+                                    // <![endif]
+                                  //  end HEADER_LOGO 
+                                  //- img.light-img(
+                                  //-   src= imgUrl + '/logo_gcfx_color.png'
+                                  //-   width='220'
+                                  //-   alt='GCFX LOGO'
+                                  //-   border='0'
+                                  //-   style=`height: auto; font-family: ${font}; font-size: 15px; line-height: 15px; color: #555555;`
+                                  //- )
+                                  //- img.dark-img(
+                                  //-   src= imgUrl + '/logo_gcfx_w.png'
+                                  //-   width='220'
+                                  //-   alt='GCFX LOGO'
+                                  //-   border='0'
+                                  //-   style=`display: none; opacity: 0.7; height: auto; font-family: ${font}; font-size: 15px; line-height: 15px; color: #555555;`
+                                  //- )
+
                       block content
                       block example
-                        include ./_mail_examples.pug
+                        // include ./_mail_examples.pug
                   
                   //  Email Footer : BEGIN 
                   table(role='presentation' cellspacing='0' cellpadding='0' border='0' width='100%' style='max-width: 680px;')
                     tbody
                       tr
-                        td(style='padding: 20px; font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif; font-size: 12px; line-height: 15px; text-align: center; color: #888888;')
-                          webversion(style='color: #cccccc; text-decoration: underline; font-weight: bold;').
-                            View as a Web Page
-                            
-                          br
-                          br
-                          | 
-                          Company Name
-                          br
-                          span.unstyle-auto-detected-links
-                            | 123 Fake Street, SpringField, OR, 97477 US
-                            br
-                            | (123) 456-7890
-                          br
-                          br
-                          unsubscribe(style='color: #888888; text-decoration: underline;') unsubscribe
+                        td(width="auto")
+                        td(style="padding-top: 40px" width="272")
+                          table
+                            tbody
+                              tr
+                                td(style="padding: 4px 19px; border-right: 1px solid #656565;")
+                                  img(src= `${imgUrl}/logo_kvb.png` width='111' style="display: block")
+                                td(style="padding: 3px 19px")
+                                  img(src= `${imgUrl}/logo_gcfx.png` width='84' style="display: block")
+                        td(width="auto")
+                      tr
+                        td(
+                          style=`padding: 20px; font-family: ${font}; font-size: 10px; line-height: 15px; text-align: center; color: #656565;`
+                          colspan="3"
+                        )
+                          | Copyright © 2020 KVB Global Capital Limited. All rights reserved.
                   
                   +Bulletproof('mso')
                     !=`</td>`
