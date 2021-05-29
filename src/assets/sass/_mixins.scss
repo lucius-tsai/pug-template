@@ -46,14 +46,19 @@ $break-alt-lg: 1199px;
   }
 }
 
-@mixin clearfix() {
-  &:after{
-    content: ".";
-    display: block;
-    height: 0;
-    clear: both;
-    visibility: hidden;
+@mixin desktop($width) {
+  @media only screen and (min-width: #{$width}px ) {
+    @content;
   }
+}
+@mixin mobile($width) {
+  @media only screen and (max-width: #{($width - 1)}px ) {
+    @content;
+  }
+}
+
+@function getEm($px, $font) {
+  @return #{($px / $font)}em;
 }
 
 @mixin hover($textColor: null, $bgColor: null) {
@@ -64,14 +69,6 @@ $break-alt-lg: 1199px;
     outline: none;
     @content;
   }
-}
-
-@mixin font($size: null, $height: null, $weight: null, $color: null) {
-  @if ($size)   { font-size:   $size }
-  @if ($height) { line-height: $height }
-  @if ($weight) { font-weight: $weight}
-  @if ($color)  { color:       $color }
-  @content;
 }
 
 $container-width: 100%;
@@ -95,61 +92,26 @@ $container-min-padding: 10px;
 	}
 }
 
-@mixin border-box() {
-  box-sizing: border-box;
-}
-
-@mixin aspect-fill(){
-  background-size: cover !important;
-  background-position: center center !important; 
-}
-
-
-@mixin custom-container($gap, $mgap: null, $lgap: null) {
-  padding-left: $gap;
-  padding-right: $gap;
-  .row{
-    margin-left: -$gap;
-    margin-right: -$gap;
-  }
-  [class^=col-]{
-    padding-left: $gap;
-    padding-right: $gap;
-  }
-  [class='col']{
-    padding-left: $gap;
-    padding-right: $gap;
-  }
-  @if ($mgap) {
-    @include respond-to($r-s) {
-      padding-left: $mgap;
-      padding-right: $mgap;
-      .row{
-        margin-left: -$mgap;
-        margin-right: -$mgap;
-      }
-      [class^=col-]{
-        padding-left: $mgap;
-        padding-right: $mgap;
-      }
-      [class='col']{
-        padding-left: $mgap;
-        padding-right: $mgap;
-      }
+@mixin CARD_SET($gap, $percent) {
+  display: flex;
+  margin-left: -#{$gap}px;
+  margin-right: -#{$gap}px;
+  > div {
+    flex: 0 0 $percent;
+    .gap {
+      padding-left: #{$gap}px;
+      padding-right: #{$gap}px;
     }
   }
-  @if ($lgap) {
-    @include respond-to($r-m) {
-      padding-left: $lgap;
-      padding-right: $lgap;
-      .row{
-        margin-left: -$lgap;
-        margin-right: -$lgap;
-      }
-      [class='col']{
-        padding-left: $mgap;
-        padding-right: $mgap;
-      }
+}
+
+@mixin CTROL_PADDING($gap) {
+  margin-left: -#{$gap}px;
+  margin-right: -#{$gap}px;
+  > div {
+    .gap {
+      padding-left: #{$gap}px;
+      padding-right: #{$gap}px;
     }
   }
 }
