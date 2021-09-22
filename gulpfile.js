@@ -32,13 +32,9 @@ var sassVariables = require('gulp-sass-variables')
 
 //js
 var uglify = require("gulp-uglify");
-var babel = require("gulp-babel");
 var browserify = require("gulp-browserify");
 var babelify = require("babelify");
-var source = require("vinyl-source-stream");
-var buffer = require("vinyl-buffer");
-
-// import source from 'vinyl-source-stream'
+const closureCompiler = require('google-closure-compiler').gulp();
 
 var env = util.env.env || "development";
 var config = util.env.config || "dev";
@@ -172,10 +168,6 @@ function browserSync(done) {
   }
 }
 
-function browserSyncReload(done) {
-  browsersync.reload();
-}
-
 function cpFiles() {
   return gulp.src(PATHS.CP_SRC).pipe(gulp.dest(PATHS.CP_DIST));
 }
@@ -251,11 +243,22 @@ function compilePug() {
 
 function compileJS() {
   return gulp
-    .src(PATHS.JS_SRC)
-    .pipe(sourcemaps.init())
-    .pipe(runOpts.js.uglify ? uglify() : util.noop())
-    .pipe(sourcemaps.write("."))
-    .pipe(gulp.dest(PATHS.JS_DIST))
+    .src([
+      "./build/assets/js/**/*.js",
+      "./build/assets/plugins/**/*.js"
+    ], {base: './'})
+    .pipe(closureCompiler({
+      compilation_level: 'SIMPLE',
+      warning_level: 'VERBOSE',
+      language_in: 'ECMASCRIPT6_STRICT',
+      language_out: 'ECMASCRIPT5_STRICT',
+      output_wrapper: '(function(){\n%output%\n}).call(this)',
+      js_output_file: 'output.min.js'
+    }, {
+      platform: ['native', 'java', 'javascript']
+    }))
+    // .pipe(gulp.dest(PATHS.JS_DIST))
+    .pipe(gulp.dest('./dist/js'))
     .pipe(browsersync.stream());
 }
 
@@ -359,10 +362,11 @@ const buildProject = gulp.series(
   compileSass,
   compileCss,
   compilePug,
-  // compileJS, compileBabelJS,
   compileImages,
   cpFiles,
-  webpackTask
+  webpackTask,
+  compileJS,
+  // compileBabelJS,
 );
 
 const beforeWatch = gulp.series(
@@ -370,11 +374,11 @@ const beforeWatch = gulp.series(
   compileSass,
   compileCss,
   compilePug,
-  // compileJS,
   // compileBabelJS,
   compileImages,
   cpFiles,
-  webpackTask
+  webpackTask,
+  compileJS,
 );
 
 const watch = gulp.series(beforeWatch, gulp.parallel(watchFiles, browserSync));
